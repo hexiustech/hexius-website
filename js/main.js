@@ -798,6 +798,7 @@
     if (langSwitcher) {
       langSwitcher.addEventListener('click', (e) => {
         const currentHash = window.location.hash;
+        const baseUrl = window.SITE_BASEURL || '';
         const newUrl = langSwitcher.getAttribute('href') + currentHash;
         window.location.href = newUrl;
       });
