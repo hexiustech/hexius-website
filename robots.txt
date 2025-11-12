@@ -12,5 +12,5 @@ Disallow: /vendor/
 Disallow: /node_modules/
 
 # Sitemap
-Sitemap: https://hexius.com/sitemap.xml
+Sitemap: https://hexiustech.github.io/hexius-website/sitemap.xml
 
