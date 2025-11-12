@@ -9,6 +9,13 @@ if [ ! -f "_config.yml" ] || [ ! -f "Gemfile" ] || [ ! -d "_includes" ]; then
     exit 1
 fi
 
+# Check if token is set
+if [ -z "$GITHUB_TOKEN" ]; then
+    echo "Error: GITHUB_TOKEN environment variable not set"
+    echo "Run: export GITHUB_TOKEN=your_token_here"
+    exit 1
+fi
+
 echo "Building Jekyll site..."
 bundle exec jekyll build
 
