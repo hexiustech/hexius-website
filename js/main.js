@@ -196,9 +196,9 @@
     // Get all service IDs dynamically from service sections
     const serviceIds = Array.from(contentSections)
       .map(section => section.id)
-      .filter(id => id && id !== 'why' && id !== 'contact');
+      .filter(id => id && id !== 'why' && id !== 'contact' && id !== 'privacy');
     
-    const validSections = [...serviceIds, 'why', 'contact'];
+    const validSections = [...serviceIds, 'why', 'contact', 'privacy'];
     
     if (hash && validSections.includes(hash)) {
       showSection(hash);
@@ -231,8 +231,8 @@
     // Get all service IDs dynamically
     const serviceIds = Array.from(contentSections)
       .map(section => section.id)
-      .filter(id => id && id !== 'why' && id !== 'contact');
-    const validSections = [...serviceIds, 'why', 'contact'];
+      .filter(id => id && id !== 'why' && id !== 'contact' && id !== 'privacy');
+    const validSections = [...serviceIds, 'why', 'contact', 'privacy'];
     
     if (sectionId && validSections.includes(sectionId)) {
       window.location.hash = sectionId;
@@ -797,9 +797,14 @@
     // Language switcher - preserve hash when switching
     if (langSwitcher) {
       langSwitcher.addEventListener('click', (e) => {
+        e.preventDefault();
         const currentHash = window.location.hash;
         const baseUrl = window.SITE_BASEURL || '';
-        const newUrl = langSwitcher.getAttribute('href') + currentHash;
+        const targetUrl = langSwitcher.getAttribute('href');
+        
+        // Preserve the current hash (section) when switching languages
+        // If on hero (no hash), stay on hero; if on a section, stay on that section
+        const newUrl = targetUrl + currentHash;
         window.location.href = newUrl;
       });
     }
