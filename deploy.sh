@@ -35,7 +35,7 @@ fi
 
 # Configure remote
 git remote remove origin 2>/dev/null
-git remote add origin https://github.com/hexiustech/hexius-website.git
+git remote add origin https://${GITHUB_TOKEN}@github.com/hexiustech/hexius-website.git
 
 # Deploy
 git add -A
