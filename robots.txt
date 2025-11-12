@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Disallow build directories
+Disallow: /_site/
+Disallow: /_includes/
+Disallow: /_layouts/
+Disallow: /_data/
+Disallow: /.sass-cache/
+Disallow: /.jekyll-cache/
+Disallow: /vendor/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://hexius.com/sitemap.xml
+

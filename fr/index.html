@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Hexius Technology">
+  <meta name="keywords" content="exercices sur table réalistes entreprises de taille moyenne, exercices sur table réalistes équipes dirigeantes, sécurité applicative, test d'intrusion application, exercices cybersécurité, formation AppSec">
+  <meta name="theme-color" content="#0B0D10">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://hexius.com/fr/">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://hexius.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://hexius.com/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://hexius.com/en/">
+  
+  <!-- OpenGraph / Twitter Card -->
+  <meta property="og:title" content="Hexius Technology — Services de Cybersécurité Réalistes">
+  <meta property="og:description" content="Simulez. Évaluez. Renforcez. Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.">
+  <meta property="og:image" content="https://hexius.com/assets/hexis_text_logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hexius Technology - Logo">
+  <meta property="og:url" content="https://hexius.com/fr/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hexius Technology">
+  <meta property="og:locale" content="fr_FR">
+  
+  <meta property="og:locale:alternate" content="en_US">
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hexius Technology — Services de Cybersécurité Réalistes">
+  <meta name="twitter:description" content="Simulez. Évaluez. Renforcez.">
+  <meta name="twitter:image" content="https://hexius.com/assets/hexis_text_logo.png">
+  <meta name="twitter:image:alt" content="Hexius Technology - Logo">
+  
+  <title>Hexius Technology — Services de Cybersécurité Réalistes</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/css/styles.css" as="style">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Service Colors from Config -->
+  <style>
+    :root {
+      --service-ttx-primary: #8B5CF6;
+      --service-ttx-light: #A78BFA;
+      --service-pentest-primary: #C41E3A;
+      --service-pentest-light: #E63950;
+      --service-training-primary: #37a4b6;
+      --service-training-light: #4db8c8;
+    }
+  </style>
+  
+  <!-- JSON-LD Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hexius Technology",
+    "url": "https://hexius.com",
+    "logo": "https://hexius.com/assets/logo.png",
+    "email": "contact@hexius.com",
+    "description": "Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@hexius.com",
+      "contactType": "Customer Service"
+    },
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <!-- Sticky Navigation Bar (hidden initially) -->
+<header class="navbar" id="navbar" aria-label="Main navigation">
+  <div class="container navbar-container">
+    <a href="#" class="navbar-logo" aria-label="Hexius Technology home" id="navbar-logo-link">
+      <img src="/assets/logo_text.png" alt="Hexius Technology - Logo" class="logo-icon" loading="eager">
+    </a>
+    <nav class="navbar-nav" aria-label="Main navigation">
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        
+        
+        
+        <li><a href="#ttx" class="nav-link">TTX</a></li>
+        
+        <li><a href="#pentest" class="nav-link">APT</a></li>
+        
+        <li><a href="#training" class="nav-link">AST</a></li>
+        
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        
+        <li><a href="/en/" class="nav-link lang-switcher">EN</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  
+  <main id="main-content">
+    <!-- Hero Section -->
+<section class="hero" id="hero" aria-labelledby="hero-heading">
+  <div class="container hero-container">
+    <div class="hero-logo">
+      <img src="/assets/logo_text.png" alt="Hexius Technology - Logo avec texte" class="logo-hero" loading="lazy">
+    </div>
+    <h1 id="hero-heading" class="hero-heading">Simulez. Évaluez. Renforcez.</h1>
+    <p class="hero-subhead">Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.</p>
+    
+    <div class="hero-services">
+      <p class="hero-services-label">Nos Services</p>
+      <div class="hero-services-grid">
+        
+        
+        
+        <a href="#ttx" class="hero-service-card service-btn" data-section="ttx">
+          <div class="hero-service-icon">TTX</div>
+          <h3 class="hero-service-title">Exercices de Table</h3>
+          <p class="hero-service-desc">Simulations de brèches réalistes pour votre équipe</p>
+        </a>
+        
+        <a href="#pentest" class="hero-service-card service-btn" data-section="pentest">
+          <div class="hero-service-icon">APT</div>
+          <h3 class="hero-service-title">Pentest de Produit & d'Application - Logique d'affaires, Fraude & Résultats axés sur les risques</h3>
+          <p class="hero-service-desc">Tests de sécurité pratiques, orientés pour les développeurs</p>
+        </a>
+        
+        <a href="#training" class="hero-service-card service-btn" data-section="training">
+          <div class="hero-service-icon">AST</div>
+          <h3 class="hero-service-title">Formation AppSec</h3>
+          <p class="hero-service-desc">Formation en sécurité pratique pour les développeurs</p>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-contact">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="ttx" aria-labelledby="ttx-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Exercices de Table (TTX) Réalistes",
+    "description": "Nous simulons des brèches réalistes où votre équipe doit enquêter, décider et agir — exactement comme elle le ferait lors d&#39;un incident réel.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "TTX Exécutif",
+        "price": "5000-10000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "TTX Exécutif"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "TTX Technique",
+        "price": "5000-8500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "TTX Technique"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Simulation TTX Complète",
+        "price": "10000-20000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Simulation TTX Complète"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="ttx-heading" class="section-heading">Exercices de Table (TTX) Réalistes</h2>
+    <div class="section-content">
+      <p class="lead">Nous simulons des brèches réalistes où votre équipe doit enquêter, décider et agir — exactement comme elle le ferait lors d'un incident réel.</p>
+      
+      
+      <ul class="bullets-two-col">
+        
+        <li>Scénarios personnalisés alignés sur vos technologies et secteur (Finance, Juridique, Santé, Tech/SaaS).</li>
+        
+        <li>Scénario de brèche assumée (Assumed Breach) mappé aux TTPs d'APT réels.</li>
+        
+        <li>Exercices techniques et exécutifs. Formez vos développeurs et votre équipe de gestion à répondre à un incident.</li>
+        
+        <li>Journalisation des décisions en temps réel et validation de playbook.</li>
+        
+      </ul>
+      
+
+      
+
+      
+      <div class="deliverables">
+        <p><strong>Livrable :</strong> Résumé exécutif, Leçons apprises, Chronologie de l'exercice, Validation du playbook d'exercice et recommandations</p>
+      </div>
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+        <ul class="pricing-list">
+          
+          <li><strong>TTX Exécutif:</strong> <strong>$5,000 à $10,000</strong></li>
+          
+          <li><strong>TTX Technique:</strong> <strong>$5,000 à $8,500</strong></li>
+          
+          <li><strong>Simulation TTX Complète:</strong> <strong>$10,000 à $20,000</strong></li>
+          
+        </ul>
+        
+      </div>
+      
+
+      
+
+      
+      <div class="promo-pill">
+        Pilote de Lancement : <strong>50% de réduction</strong> pour les 3 premières réservations avant le 31 janvier 2026 (étude de cas anonymisée requise).
+      </div>
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Taille de l'équipe : 5-10 participants recommandés.</li>
+              
+            
+              
+              
+                
+                <li>Durée : 3 heures recommandées, 6 heures maximum.</li>
+              
+            
+              
+              
+                
+                <li>Accès à vos développeurs ou ingénieurs en sécurité pour développer l'exercice et jouer l'exercice.</li>
+              
+            
+              
+              
+                
+                <li>Requis : Accès à votre playbook de réponse aux incidents, parties prenantes clés disponibles, système de réunion virtuelle.</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Réserver un appel</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="pentest" aria-labelledby="pentest-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pentest de Produit & d'Application - Logique d'affaires, Fraude & Résultats axés sur les risques",
+    "description": "Nous allons au-delà du scan de vulnérabilités pour valider les chemins d&#39;abus réels, les risques de fraude et les failles de logique exploitables qui impactent votre entreprise.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Pentest Standard - 5 à 10 jours",
+        "price": "5000-15000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Pentest Standard - 5 à 10 jours"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Évaluation Complète - 10 à 20 jours",
+        "price": "15000-30000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Évaluation Complète - 10 à 20 jours"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Forfait Entreprise",
+        "price": "Devis personnalisé",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Forfait Entreprise"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="pentest-heading" class="section-heading">Pentest de Produit & d'Application - Logique d'affaires, Fraude & Résultats axés sur les risques</h2>
+    <div class="section-content">
+      <p class="lead">Nous allons au-delà du scan de vulnérabilités pour valider les chemins d'abus réels, les risques de fraude et les failles de logique exploitables qui impactent votre entreprise.</p>
+      
+      
+      <ul class="bullets">
+        
+        <li><strong>Tests alignés OWASP et abus de logique d'affaires :</strong> vérifications de sécurité standard combinées avec des cas d'abus ciblés mappés à vos flux produits.</li>
+        
+        <li><strong>Preuves d'exploitation claires avec étapes de reproduction :</strong> preuves de concept fonctionnelles et instructions de relecture étape par étape pour vos développeurs.</li>
+        
+        <li><strong>Sévérité avec contexte de risque d'affaires et corrections développeur :</strong> résultats priorisés avec justification de l'impact, conseils de remédiation et extraits de code le cas échéant.</li>
+        
+        <li><strong>Retest optionnel de 30 jours pour les critiques et résultats à haut risque :</strong> confirmer les corrections et boucler la boucle.</li>
+        
+      </ul>
+      
+
+      
+
+      
+      <div class="deliverables">
+        <p><strong>Livrable :</strong> Rapport PDF et liste de problèmes prête pour tickets (CSV/JSON), présentation optionnelle du rapport, retest optionnel de 30 jours et sessions de suivi possibles.</p>
+      </div>
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+        <ul class="pricing-list">
+          
+          <li><strong>Pentest Standard - 5 à 10 jours:</strong> <strong>$5,000 à $15,000</strong></li>
+          
+          <li><strong>Évaluation Complète - 10 à 20 jours:</strong> <strong>$15,000 à $30,000</strong></li>
+          
+          <li><strong>Forfait Entreprise:</strong> <strong>Devis personnalisé</strong></li>
+          
+        </ul>
+        
+        <p class="pricing-note">Les prix varient selon le périmètre de l'application, la complexité et les exigences de conformité.</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Portée : Une démo de votre application.</li>
+              
+            
+              
+              
+                
+                <li>URL de l'application et identifiants d'accès pour tous vos rôles.</li>
+              
+            
+              
+              
+                
+                <li>Environnement de production préféré.</li>
+              
+            
+              
+              
+                
+                <li>Liste des fonctionnalités critiques à tester.</li>
+              
+            
+              
+              
+                
+                <li>Toute exigence de conformité (SOC 2, ISO 27001, etc.).</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="training" aria-labelledby="training-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Formation AppSec (Pratique pour les développeurs)",
+    "description": "Nous offrons des sessions sur mesure pour chaque public : un cours d&#39;introduction utilisant des scénarios d&#39;attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Introduction pour Développeurs",
+        "price": "1500-2500 par personne",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Introduction pour Développeurs"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Approfondissement pour Développeurs",
+        "price": "2500-3500 par personne",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Approfondissement pour Développeurs"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Atelier pour Exécutifs",
+        "price": "3500-5000 par personne",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Atelier pour Exécutifs"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Forfait personnalisé disponible",
+        "price": "Demander un devis personnalisé",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Forfait personnalisé disponible"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="training-heading" class="section-heading">Formation AppSec (Pratique pour les développeurs)</h2>
+    <div class="section-content">
+      <p class="lead">Nous offrons des sessions sur mesure pour chaque public : un cours d'introduction utilisant des scénarios d'attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.</p>
+      
+      
+      <ul class="bullets">
+        
+        <li>Sessions de formation de 2-8 heures</li>
+        
+        <li>Modélisation des menaces et laboratoires de cas d'abus</li>
+        
+        <li>Télétravail d'abord, aucun déplacement requis. Formation sur site possible à discuter.</li>
+        
+        <li>Aide-mémoires et listes de contrôle à emporter</li>
+        
+      </ul>
+      
+
+      
+      <div class="training-formats">
+        <h3 class="training-formats-heading">Formats de Formation Disponibles</h3>
+        <div class="training-formats-list">
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Introduction Développeur</h4>
+            <p class="training-format-description">Pratiques fondamentales de programmation sécuritaire, vulnérabilités courantes et démonstrations d'exploitation réelles (programmation sécuritaire, authentification, secrets, SSRF, injection, OAuth, etc.).</p>
+          </div>
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Approfondissement Développeur</h4>
+            <p class="training-format-description">Sujets AppSec avancés, parcours d'attaque et modèles de conception sécuritaire adaptés à vos technologies ou fonctionnalités produits.</p>
+          </div>
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Atelier pour Exécutifs</h4>
+            <p class="training-format-description">Discussion stratégique sur les risques produits et applicatifs, la prise de décision et les priorités de gouvernance. Nous pouvons également vous aider à définir votre programme de sécurité et votre cadre de gouvernance.</p>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+        <ul class="pricing-list">
+          
+          <li><strong>Introduction pour Développeurs:</strong> <strong>$1,500 à $2,500 par personne</strong></li>
+          
+          <li><strong>Approfondissement pour Développeurs:</strong> <strong>$2,500 à $3,500 par personne</strong></li>
+          
+          <li><strong>Atelier pour Exécutifs:</strong> <strong>$3,500 à $5,000 par personne</strong></li>
+          
+          <li><strong>Forfait personnalisé disponible:</strong> <strong>Demander un devis personnalisé</strong></li>
+          
+        </ul>
+        
+        <p class="pricing-note">Les prix varient selon la taille de l'équipe, la durée et les exigences de personnalisation.</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Taille de l'équipe : 5-30 développeurs.</li>
+              
+            
+              
+              
+                
+                <li>Durée : 2-8 heures par atelier.</li>
+              
+            
+              
+              
+                
+                <li>Requis : Liste des technologies/langages utilisés, sujets de formation préférés.</li>
+              
+            
+              
+              
+                
+                <li>Optionnel : Accès à l'environnement de développement, accès au dépôt de code (lecture seule) pour examiner les problèmes réels et les corrections.</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+
+<!-- Why Hexius Section -->
+<section class="content-section" id="why" aria-labelledby="why-heading" aria-hidden="true">
+  <div class="container">
+    <h2 id="why-heading" class="section-heading">Pourquoi Hexius Technology</h2>
+    <div class="section-content">
+      <ul class="why-list">
+        <li>
+          <div class="why-icon">🎯</div>
+          <h3>Savoir-faire d'adversaire réaliste</h3>
+        </li>
+        <li>
+          <div class="why-icon">📋</div>
+          <h3>Livrables exploitables (playbooks, chronologies, tickets)</h3>
+        </li>
+        <li>
+          <div class="why-icon">👥</div>
+          <h3>Alignement exécutif + technique</h3>
+        </li>
+        <li>
+          <div class="why-icon">⚡</div>
+          <h3>Livraison rapide, télétravail d'abord</h3>
+        </li>
+      </ul>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="content-section" id="contact" aria-labelledby="contact-heading" aria-hidden="true">
+  <div class="container">
+    
+    
+    <h2 id="contact-heading" class="section-heading">Parler à Hexius</h2>
+    <div class="section-content">
+      <p class="lead">Dites-nous vos objectifs, vos principaux risques et votre stack technologique. Nous proposerons un engagement adapté.</p>
+      
+      <div class="contact-info">
+        <p><strong>Courriel :</strong> <a href="mailto:contact@hexius.com">contact@hexius.com</a></p>
+        <p>
+          <strong>
+            
+              Céduler
+            
+          </strong>
+          <a href="https://calendly.com/patrick-hexius/30min" target="_blank" rel="noopener noreferrer">un appel avec Calendly</a>
+        </p>
+      </div>
+
+      <div class="badges">
+        
+        <span class="badge">Télétravail d'abord</span>
+        
+        <span class="badge">Fuseaux horaires US/Canada/UE</span>
+        
+      </div>
+
+      <form class="contact-form" id="contact-form" aria-label="Formulaire de contact">
+        
+        <div class="form-group">
+          <label for="name">Nom</label>
+          
+          <input type="text" id="name" name="name" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Professionnel</label>
+          
+          <input type="email" id="email" name="email" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Entreprise</label>
+          
+          <input type="text" id="company" name="company" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="service">Service d'Intérêt</label>
+          
+          <select id="service" name="service" required aria-required="true">
+            
+            <option value="" >Demande Générale</option>
+            
+            <option value="ttx" data-service-id="ttx">Exercices sur Table (TTX)</option>
+            
+            <option value="pentest" data-service-id="pentest">Pentest d'Application</option>
+            
+            <option value="training" data-service-id="training">Formation AppSec</option>
+            
+          </select>
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          
+          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+          
+        </div>
+        
+        
+        <div class="service-requirements" id="service-requirements" style="display: none;">
+          <div class="requirements-header">
+            <strong>Exigences pour ce service :</strong>
+          </div>
+          <div class="requirements-content" id="requirements-content"></div>
+        </div>
+        
+        <div id="service-requirements-data" style="display: none;">
+          
+          
+          
+          <div data-service-id="ttx" data-requirements="Taille de l&#39;équipe : 5-10 participants recommandés. Durée : 3 heures recommandées, 6 heures maximum. Accès à vos développeurs ou ingénieurs en sécurité pour développer l&#39;exercice et jouer l&#39;exercice. Requis : Accès à votre playbook de réponse aux incidents, parties prenantes clés disponibles, système de réunion virtuelle."></div>
+          
+          <div data-service-id="pentest" data-requirements="Portée : Une démo de votre application. URL de l&#39;application et identifiants d&#39;accès pour tous vos rôles. Environnement de production préféré. Liste des fonctionnalités critiques à tester. Toute exigence de conformité (SOC 2, ISO 27001, etc.)."></div>
+          
+          <div data-service-id="training" data-requirements="Taille de l&#39;équipe : 5-30 développeurs. Durée : 2-8 heures par atelier. Requis : Liste des technologies/langages utilisés, sujets de formation préférés. Optionnel : Accès à l&#39;environnement de développement, accès au dépôt de code (lecture seule) pour examiner les problèmes réels et les corrections."></div>
+          
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+      </form>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+
+  </main>
+  
+  <!-- Footer -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="/assets/logo.png" alt="Hexius Technology - Logo" class="logo-footer" width="32" height="32" loading="lazy">
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          
+          
+          
+          <li><a href="#ttx">TTX</a></li>
+          
+          <li><a href="#pentest">APT</a></li>
+          
+          <li><a href="#training">AST</a></li>
+          
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#privacy">Confidentialité</a></li>
+        </ul>
+      </nav>
+      <p class="footer-note">Support bilingue (EN/FR). Clients UE : conformité GDPR/ISO 27001.</p>
+      <p class="footer-copyright">&copy; 2025 Hexius Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  
+  <script src="/js/main.js"></script>
+</body>
+</html>
+
