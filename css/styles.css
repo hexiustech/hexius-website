@@ -950,6 +950,37 @@ p {
   }
 }
 
+/* Deliverables */
+.deliverables {
+  margin: var(--spacing-lg) 0;
+}
+
+.deliverables p {
+  margin-bottom: 0;
+}
+
+.deliverables-list {
+  list-style: none;
+  margin: var(--spacing-sm) 0 0 var(--spacing-md);
+  padding-left: 0;
+}
+
+.deliverables-list li {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-lg);
+  position: relative;
+  line-height: 1.6;
+}
+
+.deliverables-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 18px;
+}
+
 /* Pricing */
 .pricing {
   margin: var(--spacing-lg) 0;
@@ -1019,10 +1050,64 @@ p {
   color: var(--blue);
 }
 
+.pricing-item {
+  margin-bottom: var(--spacing-lg);
+}
+
+.pricing-item:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text);
+}
+
+.pricing-item-description {
+  margin-bottom: var(--spacing-sm);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pricing-item-price {
+  margin: var(--spacing-xs) 0;
+}
+
+.pricing-tiers {
+  list-style: none;
+  margin: var(--spacing-sm) 0;
+  padding-left: 0;
+}
+
+.pricing-tiers li {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-lg);
+  position: relative;
+  line-height: 1.6;
+}
+
+.pricing-tiers li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Service-specific pricing tier colors */
+#training .pricing-tiers li::before {
+  color: var(--blue);
+}
+
 .pricing-note {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-md);
   font-size: 14px;
   color: var(--muted);
+  line-height: 1.6;
 }
 
 /* Training Formats */
