@@ -312,12 +312,6 @@ p {
   border-bottom: 2px solid;
   border-image: linear-gradient(90deg, var(--accent), var(--accent-2)) 1;
   z-index: 1000;
-  transform: translateY(-100%);
-  transition: transform var(--transition-slow);
-}
-
-.navbar.visible {
-  transform: translateY(0);
 }
 
 .navbar-container {
@@ -2027,6 +2021,25 @@ p {
   color: var(--accent);
   font-size: 16px;
   margin: 0 0 var(--spacing-md) 0;
+}
+
+.about-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: var(--spacing-md);
+  transition: color 0.2s;
+}
+
+.about-linkedin:hover {
+  color: var(--accent);
+}
+
+.about-linkedin__icon {
+  flex-shrink: 0;
 }
 
 .subsection-heading {

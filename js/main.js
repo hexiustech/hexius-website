@@ -164,26 +164,8 @@
    * Update navbar visibility based on current state
    */
   function updateNavbarVisibility() {
-    const shouldShow = state.currentSection !== null || window.scrollY > 100;
-    
-    if (shouldShow && !state.isNavbarVisible) {
-      navbar.classList.add('visible');
+    if (!state.isNavbarVisible) {
       state.isNavbarVisible = true;
-      
-      // Animate logo to compact size
-      if (heroLogo) {
-        heroLogo.style.maxWidth = '180px';
-        heroLogo.style.maxHeight = '40px';
-      }
-    } else if (!shouldShow && state.isNavbarVisible) {
-      navbar.classList.remove('visible');
-      state.isNavbarVisible = false;
-      
-      // Reset logo to hero size
-      if (heroLogo) {
-        heroLogo.style.maxWidth = '400px';
-        heroLogo.style.maxHeight = '120px';
-      }
     }
   }
 
