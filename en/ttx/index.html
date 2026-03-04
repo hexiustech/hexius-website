@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realistic Tabletop Exercises (TTX) | Hexius Technology</title>
+  <meta name="description" content="We simulate true-to-life breaches where your team must investigate, decide, and act exactly as they would in a real incident.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Hexius Technology">
+  <meta name="theme-color" content="#0B0D10">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://hexius.com/en/ttx/">
+  <link rel="alternate" hreflang="en" href="https://hexius.com/en/ttx/">
+  <link rel="alternate" hreflang="fr" href="https://hexius.com/fr/ttx/">
+  <link rel="alternate" hreflang="x-default" href="https://hexius.com/en/ttx/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Realistic Tabletop Exercises (TTX) | Hexius Technology">
+  <meta property="og:description" content="Realistic assume-breach TTX simulations for your teams">
+  <meta property="og:image" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:secure_url" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Realistic Tabletop Exercises (TTX) — Hexius Technology">
+  <meta property="og:url" content="https://hexius.com/en/ttx/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hexius Technology">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:locale:alternate" content="fr_FR">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Realistic Tabletop Exercises (TTX) | Hexius Technology">
+  <meta name="twitter:description" content="Realistic assume-breach TTX simulations for your teams">
+  <meta name="twitter:image" content="https://hexius.com/assets/logo_text.png">
+  <meta name="twitter:image:alt" content="Realistic Tabletop Exercises (TTX) — Hexius Technology">
+  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --service-ttx-primary: #8B5CF6;
+      --service-ttx-light: #A78BFA;
+      --service-pentest-primary: #C41E3A;
+      --service-pentest-light: #E63950;
+      --service-training-primary: #37a4b6;
+      --service-training-light: #4db8c8;
+    }
+    .landing-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(167, 179, 194, 0.12);
+      position: sticky;
+      top: 0;
+      background: #0B0D10;
+      z-index: 100;
+    }
+    .landing-nav__logo img { height: 32px; width: auto; }
+    .landing-nav__back {
+      color: var(--accent, #3AF2B8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .landing-nav__back:hover { opacity: 0.75; }
+    .landing-main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .landing-service__header { margin-bottom: 2rem; }
+    .service-icon-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      background: rgba(58, 242, 184, 0.1);
+      color: #3AF2B8;
+      border: 1px solid rgba(58, 242, 184, 0.25);
+    }
+    [data-service="ttx"] .service-icon-badge {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--service-ttx-primary);
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+    [data-service="pentest"] .service-icon-badge {
+      background: rgba(196, 30, 58, 0.1);
+      color: var(--service-pentest-primary);
+      border-color: rgba(196, 30, 58, 0.25);
+    }
+    [data-service="training"] .service-icon-badge {
+      background: rgba(55, 164, 182, 0.1);
+      color: var(--service-training-primary);
+      border-color: rgba(55, 164, 182, 0.25);
+    }
+    .landing-service__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #E7ECF2;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+    }
+    .landing-service__description {
+      font-size: 1.125rem;
+      color: #A7B3C2;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .landing-service__bullets { margin: 2rem 0; }
+    .landing-service__bullets ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .landing-service__bullets li {
+      padding-left: 1.5rem;
+      position: relative;
+      color: #A7B3C2;
+      line-height: 1.6;
+    }
+    .landing-service__bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3AF2B8;
+      font-weight: 600;
+    }
+    [data-service="ttx"] .landing-service__bullets li::before { color: var(--service-ttx-primary); }
+    [data-service="pentest"] .landing-service__bullets li::before { color: var(--service-pentest-primary); }
+    [data-service="training"] .landing-service__bullets li::before { color: var(--service-training-primary); }
+    .landing-service__pricing-note {
+      font-size: 0.875rem;
+      color: #A7B3C2;
+      margin: 1.5rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 2px solid rgba(167, 179, 194, 0.2);
+    }
+    .landing-service__ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .landing-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(167, 179, 194, 0.12);
+      font-size: 0.875rem;
+      color: #A7B3C2;
+    }
+    .landing-footer a { color: #3AF2B8; text-decoration: none; }
+    .landing-footer a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Service JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Realistic Tabletop Exercises (TTX)",
+    "description": "We simulate true-to-life breaches where your team must investigate, decide, and act exactly as they would in a real incident.",
+    "url": "https://hexius.com/en/ttx/",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://hexius.com/#organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "availableLanguage": ["English", "French"],
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Executive TTX",
+        "price": "5000-10000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Executive TTX"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Technical TTX",
+        "price": "5000-8500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Technical TTX"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Complete TTX Simulation",
+        "price": "10000-20000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Complete TTX Simulation"
+      }
+      
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="landing-nav">
+    <a href="https://hexius.com/en/" class="landing-nav__logo">
+      <img src="/assets/logo_text.png" alt="Hexius Technology" height="32">
+    </a>
+    <a href="https://hexius.com/en/" class="landing-nav__back">
+      ← All services
+    </a>
+  </nav>
+
+  <main class="landing-main">
+    <article class="landing-service" data-service="ttx">
+      <header class="landing-service__header">
+        <span class="service-icon-badge">TTX</span>
+        <h1 class="landing-service__title">Realistic Tabletop Exercises (TTX)</h1>
+        <p class="landing-service__description">We simulate true-to-life breaches where your team must investigate, decide, and act exactly as they would in a real incident.</p>
+      </header>
+
+      
+      <section class="landing-service__bullets">
+        <ul>
+          
+          <li>Custom scenarios aligned to your stack and sector (Finance, Legal, Healthcare, Tech/SaaS)</li>
+          
+          <li>Assume-breach storyline mapped to real APT TTPs</li>
+          
+          <li>Technical and executive exercices. Traing your developers and your executive team to respond to an incident.</li>
+          
+          <li>Real-time decision logging and playbook validation</li>
+          
+        </ul>
+      </section>
+      
+
+      
+
+      <div class="landing-service__ctas">
+        <a href="https://hexius.com/en/#contact" class="btn btn-primary">
+          Book a call
+        </a>
+        <a href="https://hexius.com/en/#ttx" class="btn btn-ghost">
+          See full details
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="landing-footer">
+    <p>&copy; 2026 Hexius Technology &mdash; <a href="https://hexius.com/en/">hexius.com</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs) | Hexius Technology</title>
+  <meta name="description" content="Nous offrons des sessions sur mesure pour chaque public : un cours d'introduction utilisant des scénarios d'attaque réels, un atelier technique où les déve">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Hexius Technology">
+  <meta name="theme-color" content="#0B0D10">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://hexius.com/fr/training/">
+  <link rel="alternate" hreflang="en" href="https://hexius.com/en/training/">
+  <link rel="alternate" hreflang="fr" href="https://hexius.com/fr/training/">
+  <link rel="alternate" hreflang="x-default" href="https://hexius.com/en/training/">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs) | Hexius Technology">
+  <meta property="og:description" content="Théorie et laboratoire pour les développeurs et les équipes de direction.">
+  <meta property="og:image" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:secure_url" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs) — Hexius Technology">
+  <meta property="og:url" content="https://hexius.com/fr/training/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hexius Technology">
+  <meta property="og:locale" content="fr_FR">
+  
+  <meta property="og:locale:alternate" content="en_US">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs) | Hexius Technology">
+  <meta name="twitter:description" content="Théorie et laboratoire pour les développeurs et les équipes de direction.">
+  <meta name="twitter:image" content="https://hexius.com/assets/logo_text.png">
+  <meta name="twitter:image:alt" content="Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs) — Hexius Technology">
+  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --service-ttx-primary: #8B5CF6;
+      --service-ttx-light: #A78BFA;
+      --service-pentest-primary: #C41E3A;
+      --service-pentest-light: #E63950;
+      --service-training-primary: #37a4b6;
+      --service-training-light: #4db8c8;
+    }
+    .landing-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(167, 179, 194, 0.12);
+      position: sticky;
+      top: 0;
+      background: #0B0D10;
+      z-index: 100;
+    }
+    .landing-nav__logo img { height: 32px; width: auto; }
+    .landing-nav__back {
+      color: var(--accent, #3AF2B8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .landing-nav__back:hover { opacity: 0.75; }
+    .landing-main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .landing-service__header { margin-bottom: 2rem; }
+    .service-icon-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      background: rgba(58, 242, 184, 0.1);
+      color: #3AF2B8;
+      border: 1px solid rgba(58, 242, 184, 0.25);
+    }
+    [data-service="ttx"] .service-icon-badge {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--service-ttx-primary);
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+    [data-service="pentest"] .service-icon-badge {
+      background: rgba(196, 30, 58, 0.1);
+      color: var(--service-pentest-primary);
+      border-color: rgba(196, 30, 58, 0.25);
+    }
+    [data-service="training"] .service-icon-badge {
+      background: rgba(55, 164, 182, 0.1);
+      color: var(--service-training-primary);
+      border-color: rgba(55, 164, 182, 0.25);
+    }
+    .landing-service__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #E7ECF2;
+      line-height: 1.2;
+      margin: 0 0 1rem;
+    }
+    .landing-service__description {
+      font-size: 1.125rem;
+      color: #A7B3C2;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .landing-service__bullets { margin: 2rem 0; }
+    .landing-service__bullets ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .landing-service__bullets li {
+      padding-left: 1.5rem;
+      position: relative;
+      color: #A7B3C2;
+      line-height: 1.6;
+    }
+    .landing-service__bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3AF2B8;
+      font-weight: 600;
+    }
+    [data-service="ttx"] .landing-service__bullets li::before { color: var(--service-ttx-primary); }
+    [data-service="pentest"] .landing-service__bullets li::before { color: var(--service-pentest-primary); }
+    [data-service="training"] .landing-service__bullets li::before { color: var(--service-training-primary); }
+    .landing-service__pricing-note {
+      font-size: 0.875rem;
+      color: #A7B3C2;
+      margin: 1.5rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 2px solid rgba(167, 179, 194, 0.2);
+    }
+    .landing-service__ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .landing-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(167, 179, 194, 0.12);
+      font-size: 0.875rem;
+      color: #A7B3C2;
+    }
+    .landing-footer a { color: #3AF2B8; text-decoration: none; }
+    .landing-footer a:hover { text-decoration: underline; }
+  </style>
+
+  <!-- Service JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs)",
+    "description": "Nous offrons des sessions sur mesure pour chaque public : un cours d'introduction utilisant des scénarios d'attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.",
+    "url": "https://hexius.com/fr/training/",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://hexius.com/#organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "availableLanguage": ["English", "French"],
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Introduction Développeur",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Formation de base sur les pratiques de codage sécuritaire et la sensibilisation à la sécurité applicative."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Atelier Ingénieur",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Atelier pratique de développement sécuritaire axé sur l'exploitation et la correction de vulnérabilités."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Session Risque Exécutif",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Atelier stratégique pour les dirigeants, axé sur le risque produit et la gouvernance en sécurité applicative."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Forfait sur mesure",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Adapté à vos besoins :"
+      }
+      
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="landing-nav">
+    <a href="https://hexius.com/fr/" class="landing-nav__logo">
+      <img src="/assets/logo_text.png" alt="Hexius Technology" height="32">
+    </a>
+    <a href="https://hexius.com/fr/" class="landing-nav__back">
+      ← Tous les services
+    </a>
+  </nav>
+
+  <main class="landing-main">
+    <article class="landing-service" data-service="training">
+      <header class="landing-service__header">
+        <span class="service-icon-badge">AST</span>
+        <h1 class="landing-service__title">Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs)</h1>
+        <p class="landing-service__description">Nous offrons des sessions sur mesure pour chaque public : un cours d'introduction utilisant des scénarios d'attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.
+</p>
+      </header>
+
+      
+      <section class="landing-service__bullets">
+        <ul>
+          
+          <li>Sessions de formation de 2 à 8 heures</li>
+          
+          <li>Modélisation des menaces et laboratoires de cas d'abus</li>
+          
+          <li>Télétravail en priorité, aucun déplacement requis (formation sur site possible sur demande)</li>
+          
+          <li>Aide-mémoires et listes de contrôle à emporter</li>
+          
+        </ul>
+      </section>
+      
+
+      
+
+      <div class="landing-service__ctas">
+        <a href="https://hexius.com/fr/#contact" class="btn btn-primary">
+          Demander un devis
+        </a>
+        <a href="https://hexius.com/fr/#training" class="btn btn-ghost">
+          Voir les détails complets
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="landing-footer">
+    <p>&copy; 2026 Hexius Technology &mdash; <a href="https://hexius.com/fr/">hexius.com</a></p>
+  </footer>
+</body>
+</html>

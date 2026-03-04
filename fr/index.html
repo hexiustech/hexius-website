@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Hexius Technology">
+  <meta name="keywords" content="exercices sur table réalistes entreprises de taille moyenne, exercices sur table réalistes équipes dirigeantes, sécurité applicative, test d'intrusion application, exercices cybersécurité, formation AppSec">
+  <meta name="theme-color" content="#0B0D10">
+  <meta name="geo.region" content="CA">
+  <meta name="geo.placename" content="Canada">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://hexius.com/fr/">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://hexius.com/en/">
+  <link rel="alternate" hreflang="fr" href="https://hexius.com/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://hexius.com/en/">
+  
+  <!-- OpenGraph / Twitter Card -->
+  <meta property="og:title" content="Hexius Technology — Services de Cybersécurité Réalistes">
+  <meta property="og:description" content="Simulez. Évaluez. Renforcez. Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.">
+  
+  <meta property="og:image" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:secure_url" content="https://hexius.com/assets/logo_text.png">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:alt" content="Hexius Technology - Logo">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:url" content="https://hexius.com/fr/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hexius Technology">
+  <meta property="og:locale" content="fr_FR">
+  
+  <meta property="og:locale:alternate" content="en_US">
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hexius Technology — Services de Cybersécurité Réalistes">
+  <meta name="twitter:description" content="Simulez. Évaluez. Renforcez.">
+  <meta name="twitter:image" content="https://hexius.com/assets/logo_text.png">
+  <meta name="twitter:image:alt" content="Hexius Technology - Logo">
+  
+
+  <title>Hexius Technology — Services de Cybersécurité Réalistes</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/css/styles.css" as="style">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Service Colors from Config -->
+  <style>
+    :root {
+      --service-ttx-primary: #8B5CF6;
+      --service-ttx-light: #A78BFA;
+      --service-pentest-primary: #C41E3A;
+      --service-pentest-light: #E63950;
+      --service-training-primary: #37a4b6;
+      --service-training-light: #4db8c8;
+    }
+  </style>
+  
+  <!-- JSON-LD: Organization, Services, WebSite -->
+  
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://hexius.com/#organization",
+        "name": "Hexius Technology",
+        "url": "https://hexius.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hexius.com/assets/logo.png"
+        },
+        "email": "contact@hexius.com",
+        "description": "Hexius Technology - Simulate. Assess. Strengthen. | Cybersecurity Exercises, Pentesting & Developer Training",
+        "foundingDate": "2024",
+        "areaServed": {
+          "@type": "Place",
+          "name": "North America, Europe"
+        },
+        "availableLanguage": ["English", "French"],
+        "knowsAbout": ["Product & Application Pentesting","Realistic Tabletop Exercises (TTX)","Secure Development Training (Hands-On for Developers)"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "contact@hexius.com",
+          "contactType": "customer service"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Patrick Mathieu",
+          "jobTitle": "Founder & Lead Security Consultant"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Cybersecurity Services",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Product & Application Pentesting",
+            "url": "https://hexius.com/fr/pentest/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Realistic Tabletop Exercises (TTX)",
+            "url": "https://hexius.com/fr/ttx/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Secure Development Training (Hands-On for Developers)",
+            "url": "https://hexius.com/fr/training/"
+          }
+          
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hexius.com/#website",
+        "url": "https://hexius.com",
+        "name": "Hexius Technology",
+        "inLanguage": ["en", "fr"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Sticky Navigation Bar (hidden initially) -->
+<header class="navbar" id="navbar" aria-label="Main navigation">
+  <div class="container navbar-container">
+    <a href="#" class="navbar-logo" aria-label="Hexius Technology home" id="navbar-logo-link">
+      <img src="/assets/logo_text.png" alt="Hexius Technology - Logo" class="logo-icon" loading="eager">
+    </a>
+    <nav class="navbar-nav" aria-label="Main navigation">
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        
+        
+        
+        <li><a href="#pentest" class="nav-link">Pentest</a></li>
+        
+        <li><a href="#ttx" class="nav-link">TTX</a></li>
+        
+        <li><a href="#training" class="nav-link">Formation</a></li>
+        
+        <li class="nav-separator" aria-hidden="true"></li>
+       <!-- <li><a href="#why" class="nav-link">Pourquoi</a></li>-->
+        <li><a href="#about" class="nav-link">À propos</a></li>
+        <li class="nav-separator" aria-hidden="true"></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+       <!--  <li><a href="#privacy" class="nav-link">Confidentialité</a></li>-->
+        <li class="nav-separator" aria-hidden="true"></li>
+        
+        <li><a href="/en/" class="nav-link lang-switcher">EN</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  
+  <main id="main-content">
+    <!-- Hero Section -->
+<section class="hero" id="hero" aria-labelledby="hero-heading">
+  <div class="container hero-container">
+    <div class="hero-logo">
+      <img src="/assets/logo_text.png" alt="Hexius Technology - Logo avec texte" class="logo-hero" loading="lazy">
+    </div>
+    <h1 id="hero-heading" class="hero-heading">Simulez. Évaluez. Renforcez.</h1>
+    <p class="hero-subhead">Des exercices de cybersécurité réalistes, des tests d'intrusion et des formations pour développeurs de moyenne taille.</p>
+    
+    <div class="hero-services">
+      <p class="hero-services-label">Nos Services</p>
+      <div class="hero-services-grid">
+        
+        
+        
+        <a href="#pentest" class="hero-service-card service-btn" data-section="pentest">
+          <div class="hero-service-icon">APT</div>
+          <h3 class="hero-service-title">Pentest de Produits & d'Application</h3>
+          <p class="hero-service-desc">Tests de sécurité pratiques, incluant : Tests White-box et Grey-box, Logique d'affaires, Fraude & Résultats axés sur les risques</p>
+        </a>
+        
+        <a href="#ttx" class="hero-service-card service-btn" data-section="ttx">
+          <div class="hero-service-icon">TTX</div>
+          <h3 class="hero-service-title">Exercices de Table</h3>
+          <p class="hero-service-desc">Simulations de brèches réalistes pour votre équipe</p>
+        </a>
+        
+        <a href="#training" class="hero-service-card service-btn" data-section="training">
+          <div class="hero-service-icon">AST</div>
+          <h3 class="hero-service-title">Formation Développement Sécuritaire</h3>
+          <p class="hero-service-desc">Théorie et laboratoire pour les développeurs et les équipes de direction.</p>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-contact">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="pentest" aria-labelledby="pentest-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Pentest de Produits & d'Application",
+    "description": "Nous allons au-delà du scan de vulnérabilités pour valider les chemins d&#39;abus réels, les risques de fraude et les failles de logique exploitables qui impactent votre entreprise.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Pentest Standard - 5 à 10 jours",
+        "price": "8000-20000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Pentest Standard - 5 à 10 jours"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Évaluation Complète - 10 à 20 jours",
+        "price": "15000-30000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Évaluation Complète - 10 à 20 jours"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Forfait Entreprise",
+        "price": "Devis sur mesure",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Forfait Entreprise"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="pentest-heading" class="section-heading">Pentest de Produits & d'Application</h2>
+    <div class="section-content">
+      <p class="lead">Nous allons au-delà du scan de vulnérabilités pour valider les chemins d'abus réels, les risques de fraude et les failles de logique exploitables qui impactent votre entreprise.</p>
+      
+      
+      <ul class="bullets">
+        
+        <li><strong>Tests White-box et Grey-box :</strong> Nous utilisons autant d'informations que possible pour tester votre application et trouver autant de vulnérabilités que possible. Tel que tester tous les rôles pour l'authentification et l'autorisation et valider votre code source et votre architecture.</li>
+        
+        <li><strong>Tests alignés OWASP et abus de logique d'affaires :</strong> vérifications de sécurité standard combinées avec des cas d'abus ciblés mappés à vos flux produits.</li>
+        
+        <li><strong>Preuves d'exploitation claires avec étapes de reproduction :</strong> preuves de concept fonctionnelles et instructions de relecture étape par étape pour vos développeurs.</li>
+        
+        <li><strong>Sévérité avec contexte de risque d'affaires et corrections développeur :</strong> résultats priorisés avec justification de l'impact, conseils de remédiation et extraits de code le cas échéant.</li>
+        
+        <li><strong>Retest optionnel de 30 jours pour les critiques et résultats à haut risque :</strong> confirmer les corrections et boucler la boucle.</li>
+        
+      </ul>
+      
+
+      
+
+      
+      <div class="deliverables">
+        
+        
+        
+        
+        <p><strong>Livrables:</strong>
+        
+          <ul class="deliverables-list">
+            
+            <li>Rapport PDF et liste de problèmes prête pour tickets (CSV/JSON), présentation optionnelle du rapport, retest optionnel de 30 jours et sessions de suivi possibles.</li>
+            
+          </ul>
+        
+        </p>
+      </div>
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+
+        
+
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Pentest Standard - 5 à 10 jours</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">$4,800 à $12,000</span>
+                  <span class="pricing-col-badge">Économisez 40%</span>
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">$8,000 à $20,000</span>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Évaluation Complète - 10 à 20 jours</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">$9,000 à $18,000</span>
+                  <span class="pricing-col-badge">Économisez 40%</span>
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">$15,000 à $30,000</span>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Forfait Entreprise</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">Devis sur mesure</span>
+                  
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">Devis sur mesure</span>
+                </div>
+              </div>
+            
+          </div>
+        
+
+        
+        <p class="pricing-note">Prix par application. Les prix varient selon le périmètre de l'application, la complexité et les exigences de conformité.</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Portée : Une démo de votre application.</li>
+              
+            
+              
+              
+                
+                <li>URL de l'application et identifiants d'accès pour tous vos rôles.</li>
+              
+            
+              
+              
+                
+                <li>Environnement de production préféré.</li>
+              
+            
+              
+              
+                
+                <li>Liste des fonctionnalités critiques à tester.</li>
+              
+            
+              
+              
+                
+                <li>Toute exigence de conformité (SOC 2, ISO 27001, etc.).</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="ttx" aria-labelledby="ttx-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Exercices de Table (TTX) Réalistes",
+    "description": "Nous simulons des brèches réalistes où votre équipe doit enquêter, décider et agir — exactement comme elle le ferait lors d&#39;un incident réel.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "TTX Exécutif",
+        "price": "5000-10000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "TTX Exécutif"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "TTX Technique",
+        "price": "5000-8500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "TTX Technique"
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Simulation TTX Complète",
+        "price": "10000-20000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Simulation TTX Complète"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="ttx-heading" class="section-heading">Exercices de Table (TTX) Réalistes</h2>
+    <div class="section-content">
+      <p class="lead">Nous simulons des brèches réalistes où votre équipe doit enquêter, décider et agir — exactement comme elle le ferait lors d'un incident réel.</p>
+      
+      
+      <ul class="bullets-two-col">
+        
+        <li>Scénarios personnalisés alignés sur vos technologies et secteur (Finance, Juridique, Santé, Tech/SaaS).</li>
+        
+        <li>Scénario de brèche assumée (Assumed Breach) mappé aux TTPs d'APT réels.</li>
+        
+        <li>Exercices techniques et exécutifs. Formez vos développeurs et votre équipe de gestion à répondre à un incident.</li>
+        
+        <li>Journalisation des décisions en temps réel et validation de playbook.</li>
+        
+      </ul>
+      
+
+      
+
+      
+      <div class="deliverables">
+        
+        
+        
+        
+        <p><strong>Livrables:</strong>
+        
+          <ul class="deliverables-list">
+            
+            <li>Résumé exécutif, Leçons apprises, Chronologie de l'exercice, Validation du playbook d'exercice et recommandations</li>
+            
+          </ul>
+        
+        </p>
+      </div>
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+
+        
+
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">TTX Exécutif</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">$3,000 à $6,000</span>
+                  <span class="pricing-col-badge">Économisez 40%</span>
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">$5,000 à $10,000</span>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">TTX Technique</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">$3,000 à $5,100</span>
+                  <span class="pricing-col-badge">Économisez 40%</span>
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">$5,000 à $8,500</span>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Simulation TTX Complète</h4>
+            
+            <p class="pricing-item-description"></p>
+            
+
+            
+              
+              <div class="pricing-split">
+                <div class="pricing-split-col pricing-split-col--sme">
+                  <span class="pricing-col-label">PME / TPE</span>
+                  <span class="pricing-col-sublabel">< 50 employés</span>
+                  <span class="pricing-col-price">$6,000 à $12,000</span>
+                  <span class="pricing-col-badge">Économisez 40%</span>
+                </div>
+                <div class="pricing-split-col pricing-split-col--standard">
+                  <span class="pricing-col-label">Moyenne & Grande</span>
+                  <span class="pricing-col-sublabel">50+ employés</span>
+                  <span class="pricing-col-price">$10,000 à $20,000</span>
+                </div>
+              </div>
+            
+          </div>
+        
+
+        
+      </div>
+      
+
+      
+
+      
+      <div class="promo-pill">
+        Pilote de Lancement : <strong>50% de réduction</strong> pour les 3 premières réservations avant le 31 janvier 2026 (étude de cas anonymisée requise).
+      </div>
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Taille de l'équipe : 5-10 participants recommandés.</li>
+              
+            
+              
+              
+                
+                <li>Durée : 3 heures recommandées, 6 heures maximum.</li>
+              
+            
+              
+              
+                
+                <li>Accès à vos développeurs ou ingénieurs en sécurité pour développer l'exercice et jouer l'exercice.</li>
+              
+            
+              
+              
+                
+                <li>Requis : Accès à votre playbook de réponse aux incidents, parties prenantes clés disponibles, système de réunion virtuelle.</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Réserver un appel</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+<!-- Service Detail Section -->
+<section class="content-section" id="training" aria-labelledby="training-heading" aria-hidden="true">
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs)",
+    "description": "Nous offrons des sessions sur mesure pour chaque public : un cours d&#39;introduction utilisant des scénarios d&#39;attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.
+",
+    "provider": {
+      "@type": "Organization",
+      "name": "Hexius Technology",
+      "url": "https://hexius.com",
+      "email": "contact@hexius.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "North America, Europe"
+    },
+    "offers": [
+      
+      {
+        "@type": "Offer",
+        "name": "Introduction Développeur",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Formation de base sur les pratiques de codage sécuritaire et la sensibilisation à la sécurité applicative."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Atelier Ingénieur",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Atelier pratique de développement sécuritaire axé sur l'exploitation et la correction de vulnérabilités."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Session Risque Exécutif",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Atelier stratégique pour les dirigeants, axé sur le risque produit et la gouvernance en sécurité applicative."
+      },
+      
+      {
+        "@type": "Offer",
+        "name": "Forfait sur mesure",
+        "price": "",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Adapté à vos besoins :"
+      }
+      
+    ]
+  }
+  </script>
+  
+  <div class="container">
+    <h2 id="training-heading" class="section-heading">Formation Développement Sécuritaire (Théorie et Laboratoire pour Développeurs)</h2>
+    <div class="section-content">
+      <p class="lead">Nous offrons des sessions sur mesure pour chaque public : un cours d'introduction utilisant des scénarios d'attaque réels, un atelier technique où les développeurs apprennent à exploiter et sécuriser les vulnérabilités, et une session exécutive axée sur les risques produits et applicatifs.
+</p>
+      
+      
+      <ul class="bullets">
+        
+        <li>Sessions de formation de 2 à 8 heures</li>
+        
+        <li>Modélisation des menaces et laboratoires de cas d'abus</li>
+        
+        <li>Télétravail en priorité, aucun déplacement requis (formation sur site possible sur demande)</li>
+        
+        <li>Aide-mémoires et listes de contrôle à emporter</li>
+        
+      </ul>
+      
+
+      
+      <div class="training-formats">
+        <h3 class="training-formats-heading">Formats de formation disponibles</h3>
+        <div class="training-formats-list">
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Introduction Développeur</h4>
+            <p class="training-format-description">Formation de sensibilisation utilisant des scénarios d'attaque réels pour illustrer les bases du développement sécuritaire. Idéale pour les équipes débutant en sécurité applicative ou les organisations souhaitant bâtir une culture de sécurité.
+</p>
+          </div>
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Atelier Ingénieur</h4>
+            <p class="training-format-description">Session technique interactive où les développeurs exploitent et corrigent des vulnérabilités dans des exemples de code réalistes. Couvre les sujets comme la programmation sécuritaire, l'authentification, la gestion des secrets, le SSRF, les injections et OAuth.
+</p>
+          </div>
+          
+          <div class="training-format-item">
+            <h4 class="training-format-title">Session Risque Exécutif</h4>
+            <p class="training-format-description">Discussion stratégique sur les risques produits et applicatifs, la prise de décision et les priorités de gouvernance. Aide les dirigeants à définir leur programme de sécurité et leur cadre de gouvernance.
+</p>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="deliverables">
+        
+        
+        
+        
+        <p><strong>Livrables:</strong>
+        
+          <ul class="deliverables-list">
+            
+            <li>Supports de formation et présentation</li>
+            
+            <li>Aide-mémoires et fiches de vérification pour développeurs</li>
+            
+            <li>Évaluation post-formation et certificats de participation (optionnel)</li>
+            
+          </ul>
+        
+        </p>
+      </div>
+      
+
+      
+      <div class="pricing">
+        <h3 class="pricing-heading">Tarification</h3>
+
+        
+
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Introduction Développeur</h4>
+            
+            <p class="pricing-item-description">Formation de base sur les pratiques de codage sécuritaire et la sensibilisation à la sécurité applicative.</p>
+            
+
+            
+              
+              <div class="pricing-table">
+                <div class="pricing-table-header">
+                  <div class="pricing-table-cell pricing-table-cell--label">Taille du groupe</div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-label">PME / TPE</span>
+                    <span class="pricing-col-sublabel">< 50 employés</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-label">Moyenne & Grande</span>
+                    <span class="pricing-col-sublabel">50+ employés</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Individuel</strong>
+                    <span class="pricing-col-sublabel">1 participant</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$720</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$1,200</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Petit Groupe</strong>
+                    <span class="pricing-col-sublabel">5 à 10 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$2,700</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$4,500</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Grand Groupe</strong>
+                    <span class="pricing-col-sublabel">11 à 25 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$4,500</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$7,500</span>
+                  </div>
+                </div>
+                
+              </div>
+
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Atelier Ingénieur</h4>
+            
+            <p class="pricing-item-description">Atelier pratique de développement sécuritaire axé sur l'exploitation et la correction de vulnérabilités.</p>
+            
+
+            
+              
+              <div class="pricing-table">
+                <div class="pricing-table-header">
+                  <div class="pricing-table-cell pricing-table-cell--label">Taille du groupe</div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-label">PME / TPE</span>
+                    <span class="pricing-col-sublabel">< 50 employés</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-label">Moyenne & Grande</span>
+                    <span class="pricing-col-sublabel">50+ employés</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Individuel</strong>
+                    <span class="pricing-col-sublabel">1 participant</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$1,080</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$1,800</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Petit Groupe</strong>
+                    <span class="pricing-col-sublabel">5 à 10 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$3,600</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$6,000</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Grand Groupe</strong>
+                    <span class="pricing-col-sublabel">11 à 25 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$5,700</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$9,500</span>
+                  </div>
+                </div>
+                
+              </div>
+
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Session Risque Exécutif</h4>
+            
+            <p class="pricing-item-description">Atelier stratégique pour les dirigeants, axé sur le risque produit et la gouvernance en sécurité applicative.</p>
+            
+
+            
+              
+              <div class="pricing-table">
+                <div class="pricing-table-header">
+                  <div class="pricing-table-cell pricing-table-cell--label">Taille du groupe</div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-label">PME / TPE</span>
+                    <span class="pricing-col-sublabel">< 50 employés</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-label">Moyenne & Grande</span>
+                    <span class="pricing-col-sublabel">50+ employés</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Session Individuelle</strong>
+                    <span class="pricing-col-sublabel">1 à 3 exécutifs</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$1,500</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$2,500</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Groupe Direction</strong>
+                    <span class="pricing-col-sublabel">4 à 10 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$3,000</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$5,000</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Équipe Étendue</strong>
+                    <span class="pricing-col-sublabel">11 à 25 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">$4,200</span>
+                    <span class="pricing-col-badge">Économisez 40%</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">$7,000</span>
+                  </div>
+                </div>
+                
+              </div>
+
+            
+          </div>
+        
+          <div class="pricing-item">
+            <h4 class="pricing-item-title">Forfait sur mesure</h4>
+            
+            <p class="pricing-item-description">Adapté à vos besoins :</p>
+            
+
+            
+              
+              <div class="pricing-table">
+                <div class="pricing-table-header">
+                  <div class="pricing-table-cell pricing-table-cell--label">Taille du groupe</div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-label">PME / TPE</span>
+                    <span class="pricing-col-sublabel">< 50 employés</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-label">Moyenne & Grande</span>
+                    <span class="pricing-col-sublabel">50+ employés</span>
+                  </div>
+                </div>
+                
+                <div class="pricing-table-row">
+                  <div class="pricing-table-cell pricing-table-cell--label">
+                    <strong>Forfait sur mesure</strong>
+                    <span class="pricing-col-sublabel">5 à 25 participants</span>
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--sme">
+                    <span class="pricing-col-price">À discuter</span>
+                    
+                  </div>
+                  <div class="pricing-table-cell pricing-table-cell--standard">
+                    <span class="pricing-col-price">À discuter</span>
+                  </div>
+                </div>
+                
+              </div>
+
+            
+          </div>
+        
+
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <div class="service-requirements service-requirements-static">
+        <div class="requirements-header">
+          <strong>Exigences pour ce service :</strong>
+        </div>
+        <div class="requirements-content">
+          
+          
+          <ul class="requirements-bullets">
+            
+              
+              
+                
+                <li>Taille de l'équipe : nombre de participants.</li>
+              
+            
+              
+              
+                
+                <li>Durée souhaitée : 2 à 8 heures par atelier.</li>
+              
+            
+              
+              
+                
+                <li>Requis : Liste des technologies et langages utilisés, sujets de formation préférés.</li>
+              
+            
+              
+              
+                
+                <li>Optionnel : Accès en lecture seule au dépôt de code ou à un environnement de démonstration pour examiner des cas réels et leurs corrections.</li>
+              
+            
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="section-cta">
+        
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+      </div>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+
+<!-- About Section -->
+<section class="content-section" id="about" aria-labelledby="about-heading" aria-hidden="true">
+  <div class="container">
+    
+    
+
+    <h2 id="about-heading" class="section-heading">À propos d'Hexius</h2>
+
+    <div class="section-content">
+
+      <!-- Profile block -->
+      <div class="about-profile">
+        <img
+          src="/assets/pat.webp"
+          alt="Patrick, Fondateur d'Hexius Technology"
+          class="about-photo"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        <div class="about-photo about-photo-placeholder" style="display:none" aria-hidden="true"></div>
+        <div class="about-bio">
+          <h3 class="about-name">Patrick Mathieu</h3>
+          <p class="about-title">Fondateur & Consultant principal en sécurité</p>
+          <p class="lead">Patrick est un expert en cybersécurité avec plus de 18 ans d'expérience en sécurité applicative, tests d'intrusion et sécurité offensive. Il a bâti et dirigé des équipes de sécurité produit et red team au sein d'entreprises Fortune 100, co-fondé le Hackfest.ca et conseillé l'élaboration de la première politique provinciale de cybersécurité du Québec. Conférencier reconnu au DEF CON, Black Hat et DerbyCon, Patrick allie expertise technique approfondie et leadership opérationnel à chaque mandat.</p>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <h3 class="subsection-heading">Expérience</h3>
+      <ul class="experience-cards">
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">18+ ans d'expérience en sécurité offensive</h4>
+            
+            <p class="experience-card__description">Expertise approfondie en sécurité applicative et de produits, tests d'intrusion et opérations red team dans des environnements Fortune 100.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Tests d'intrusion applicatifs</h4>
+            
+            <p class="experience-card__description">Évaluations de sécurité offensives complètes, des pentests d'applications web aux simulations d'adversaires en passant par la fraude et les failles de logique d'affaires.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Red Team Operator and Manager</h4>
+            
+            <p class="experience-card__description">Conception et direction d'exercices et d'opérations et infrasutructures de red team réalistes pour valider la posture de sécurité des organisations face aux vrais adversaires.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Expériences variées</h4>
+            
+            <p class="experience-card__description">Expériences variées dans des environnements Fortune 100, au gouvernement, en assurance, banque, compagnies de sécurité, etc. autant en tant que consultant que interne et a collaboré avec des équipes tels que Engineering, Légal, Communication et équipes de sécurité telles SecOps, CorpSec, Awareness, GRC, CloudSec, AppSec, etc.</p>
+            
+          </div>
+        </li>
+        
+      </ul>
+
+      <!-- Trust points -->
+      <h3 class="subsection-heading">Pourquoi travailler avec moi</h3>
+      <ul class="experience-cards">
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Expérience terrain</h4>
+            
+            <p class="experience-card__description">Méthodologies éprouvées issues de rôles de leadership en sécurité produit et red team au sein d'entreprises Fortune 100, co-fondé Hackfest.ca et conseillé à l'élaboration de la première politique provinciale de cybersécurité du Québec.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Approche orientée affaires</h4>
+            
+            <p class="experience-card__description">Recommandations de sécurité qui équilibrent la réduction des risques avec les objectifs d'affaires et les contraintes opérationnelles.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">De la vraie sécurité, pas seulement de la conformité</h4>
+            
+            <p class="experience-card__description">Nous nous concentrons sur la vraie sécurité, pas seulement sur la conformité. Nous offrons des solutions pratiques et réalistes qui comblent l'écart entre la sécurité technique et les résultats commerciaux.</p>
+            
+          </div>
+        </li>
+        
+        <li class="experience-card">
+          <div class="experience-card__icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+</div>
+          <div class="experience-card__body">
+            <h4 class="experience-card__title">Solutions adaptées aux PME et à votre budget</h4>
+            
+            <p class="experience-card__description">J’offre aux PME des solutions de sécurité réalistes, concrètes et personnalisées, adaptées à vos besoins spécifiques et à vos contraintes budgétaires, afin de maximiser la valeur pour votre entreprise.</p>
+            
+          </div>
+        </li>
+        
+      </ul>
+
+      <!-- Media & Appearances -->
+      
+      <h3 class="subsection-heading">Médias & Apparitions publiques</h3>
+      <ul class="media-list">
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://smbpodcast.ca/how-can-smes-protect-themselves-from-cyber-threats/" target="_blank" rel="noopener noreferrer">Comment les PME peuvent-elles se protéger contre les cybermenaces?</a></strong>
+            
+            <span class="media-venue">SMB Podcast</span>
+            <span class="media-date">Février 2026</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.youtube.com/watch?v=HyLOLLTQ2bc" target="_blank" rel="noopener noreferrer">Balado GoSecure</a></strong>
+            
+            <span class="media-venue">GoSecure</span>
+            <span class="media-date">Décembre 2025</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--conference">CONFERENCE</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.blackhat.com/sector/2025/briefings/schedule/index.html#hack_canadaexe---v-4---scan-measuring-government-cybersecurity-posture-5-years-of-attack-surface-analysis-in-canada-47426" target="_blank" rel="noopener noreferrer">SCAN : Mesurer la posture de cybersécurité gouvernementale — 5 ans d'analyse de la surface d'attaque au Canada</a></strong>
+            
+            <span class="media-venue">Black Hat / SecTor</span>
+            <span class="media-date">Octobre 2025</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://creators.spotify.com/pod/profile/the-elephant-in-appsec/episodes/Hacker-Turned-Policy-Builder-What-They-Dont-Want-You-to-Know-e2r1k3g/a-abkol8t" target="_blank" rel="noopener noreferrer">Hacker Turned Policy Builder: What They Don't Want You to Know</a></strong>
+            
+            <span class="media-venue">The Elephant in AppSec</span>
+            <span class="media-date">2024</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://securite.fm/special/2024/02/01/episode-0x238.html#3253b9ef" target="_blank" rel="noopener noreferrer">Universités ciblées par l'espionnage chinois</a></strong>
+            
+            <span class="media-venue">Securite.fm — Épisode 0x238</span>
+            <span class="media-date">Février 2024</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--conference">CONFERENCE</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.youtube.com/watch?v=POfUC_CcPa0" target="_blank" rel="noopener noreferrer">Hackfest 2023 — Conférence</a></strong>
+            
+            <span class="media-venue">Hackfest</span>
+            <span class="media-date">2023</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://nisos.com/podcast/ep72/" target="_blank" rel="noopener noreferrer">Renseignement sur les menaces, sécurité applicative et fraude</a></strong>
+            
+            <span class="media-venue">Nisos Podcast — Épisode 72</span>
+            <span class="media-date">2022</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--podcast">PODCAST</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://blog.nisos.com/podcast/cyber5_episode2" target="_blank" rel="noopener noreferrer">Sécurité offensive chez LogMeIn</a></strong>
+            
+            <span class="media-venue">Nisos Cyber5 Podcast</span>
+            <span class="media-date">2020</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--conference">CONFERENCE</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://bsideslv2017.sched.com/event/BNG5/purple-team-how-this-color-can-help-you-and-your-organisation-learn-and-get-better" target="_blank" rel="noopener noreferrer">Purple Team : comment cette couleur peut vous aider à apprendre et à vous améliorer</a></strong>
+            
+            <span class="media-venue">BSidesLV</span>
+            <span class="media-date">2017</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--conference">CONFERENCE</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://blackhat.com/us-17/arsenal.html#patrick-mathieu" target="_blank" rel="noopener noreferrer">Black Hat Arsenal</a></strong>
+            
+            <span class="media-venue">Black Hat USA</span>
+            <span class="media-date">2017</span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--tv">TV</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.google.com/search?q=site%3Atvanouvelles.ca+%22patrick+mathieu%22" target="_blank" rel="noopener noreferrer">Entrevues & articles</a></strong>
+            
+            <span class="media-venue">TVA Nouvelles</span>
+            <span class="media-date"></span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--radio">RADIO</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.youtube.com/@radioxquebec/search?query=patrick%20mathieu" target="_blank" rel="noopener noreferrer">Entrevues & articles</a></strong>
+            
+            <span class="media-venue">Radio X</span>
+            <span class="media-date"></span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--radio">RADIO</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.google.com/search?q=site%3Aqub.ca+%22patrick+mathieu%22" target="_blank" rel="noopener noreferrer">Entrevues & articles</a></strong>
+            
+            <span class="media-venue">QUB Radio</span>
+            <span class="media-date"></span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--radio">RADIO</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.google.com/search?q=site%3Aradio-canada.ca+%22patrick+mathieu%22" target="_blank" rel="noopener noreferrer">Entrevues & articles</a></strong>
+            
+            <span class="media-venue">Radio-Canada</span>
+            <span class="media-date"></span>
+          </div>
+        </li>
+        
+        <li class="media-item">
+          <span class="media-badge media-badge--press">PRESS</span>
+          <div class="media-meta">
+            
+            <strong><a href="https://www.google.com/search?q=site%3Ajournaldequebec.com+%22patrick+mathieu%22" target="_blank" rel="noopener noreferrer">Entrevues & articles</a></strong>
+            
+            <span class="media-venue">Journal de Québec</span>
+            <span class="media-date"></span>
+          </div>
+        </li>
+        
+      </ul>
+      
+
+      <!-- CTA -->
+      <div style="margin-top: var(--spacing-lg);">
+        <a href="#contact" class="btn btn-primary">Réserver un appel</a>
+      </div>
+
+    </div>
+
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+<!-- Why Hexius Section -->
+<section class="content-section" id="why" aria-labelledby="why-heading" aria-hidden="true">
+  <div class="container">
+    
+    
+    <h2 id="why-heading" class="section-heading">Pourquoi Hexius Technology</h2>
+    <div class="section-content">
+      
+      <p class="lead">Nous offrons des services de cybersécurité pratiques et réalistes qui comblent l'écart entre la sécurité technique et les résultats commerciaux. Notre approche combine les techniques d'adversaires du monde réel avec des livrables exploitables que vos équipes peuvent utiliser immédiatement.</p>
+      
+      <ul class="why-list">
+        
+        <li>
+          <div class="why-icon">🎯</div>
+          <div class="why-content">
+            <h3>Savoir-faire d'adversaire réaliste</h3>
+            
+            <p>Nos exercices sur table simulent des brèches réalistes en utilisant de vrais TTPs d'APT. Nos tests d'intrusion vont au-delà du scan de vulnérabilités pour valider les chemins d'abus réels et les failles de logique d'affaires. Notre formation utilise de vraies démonstrations d'exploitation, pas des exemples théoriques.</p>
+            
+          </div>
+        </li>
+        
+        <li>
+          <div class="why-icon">📋</div>
+          <div class="why-content">
+            <h3>Livrables exploitables (playbooks, chronologies, tickets)</h3>
+            
+            <p>Chaque engagement livre des artefacts immédiatement utilisables : résumés exécutifs pour la direction, playbooks détaillés pour vos équipes, listes de problèmes prêtes pour tickets pour les développeurs, et conseils de remédiation étape par étape. Pas de fioritures, juste ce dont vous avez besoin pour vous améliorer.</p>
+            
+          </div>
+        </li>
+        
+        <li>
+          <div class="why-icon">👥</div>
+          <div class="why-content">
+            <h3>Alignement exécutif + technique</h3>
+            
+            <p>Nous parlons les deux langages. Nos exercices TTX forment à la fois les développeurs et les équipes de gestion. Nos rapports de test d'intrusion incluent le contexte de risque d'affaires aux côtés des détails techniques. Notre formation s'étend des ateliers développeurs aux sessions de gouvernance exécutive.</p>
+            
+          </div>
+        </li>
+        
+        <li>
+          <div class="why-icon">⚡</div>
+          <div class="why-content">
+            <h3>Livraison rapide, télétravail d'abord</h3>
+            
+            <p>Télétravail d'abord signifie aucun délai de voyage. Nos engagements commencent rapidement, livrent à temps et s'adaptent à la taille de votre équipe. Qu'il s'agisse d'un TTX de 3 heures, d'un test d'intrusion de 5 jours ou d'une session de formation de 2 heures, nous nous adaptons à votre horaire et à vos besoins.</p>
+            
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="content-section" id="contact" aria-labelledby="contact-heading" aria-hidden="true">
+  <div class="container">
+    
+    
+    <h2 id="contact-heading" class="section-heading">Parler à Hexius</h2>
+    <div class="section-content">
+      <p class="lead">Dites-nous vos objectifs, vos principaux risques et votre stack technologique. Nous proposerons un engagement adapté.</p>
+      
+      <div class="contact-info">
+        <p><strong>Courriel :</strong> <a href="mailto:contact@hexius.com">contact@hexius.com</a></p>
+        <p>
+          <strong>
+            
+              Céduler
+            
+          </strong>
+          <a href="https://calendly.com/patrick-hexius/30min" target="_blank" rel="noopener noreferrer">un appel avec Calendly</a>
+        </p>
+      </div>
+
+      <div class="badges">
+        
+        <span class="badge">Télétravail d'abord</span>
+        
+        <span class="badge">Fuseaux horaires US/Canada/UE</span>
+        
+      </div>
+
+      <form class="contact-form" id="contact-form" aria-label="Formulaire de contact">
+        
+        <div class="form-group">
+          <label for="name">Nom</label>
+          
+          <input type="text" id="name" name="name" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Professionnel</label>
+          
+          <input type="email" id="email" name="email" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Entreprise</label>
+          
+          <input type="text" id="company" name="company" required aria-required="true">
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="service">Service d'Intérêt</label>
+          
+          <select id="service" name="service" >
+            
+            <option value="" >Demande Générale</option>
+            
+            <option value="ttx" data-service-id="ttx">Exercices sur Table (TTX)</option>
+            
+            <option value="pentest" data-service-id="pentest">Pentest d'Application</option>
+            
+            <option value="training" data-service-id="training">Formation AppSec</option>
+            
+          </select>
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          
+          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+          
+        </div>
+        
+        
+        <div class="service-requirements" id="service-requirements" style="display: none;">
+          <div class="requirements-header">
+            <strong>Exigences pour ce service :</strong>
+          </div>
+          <div class="requirements-content" id="requirements-content"></div>
+        </div>
+        
+        <div id="service-requirements-data" style="display: none;">
+          
+          
+          
+          <div data-service-id="pentest" data-requirements="Portée : Une démo de votre application. URL de l&#39;application et identifiants d&#39;accès pour tous vos rôles. Environnement de production préféré. Liste des fonctionnalités critiques à tester. Toute exigence de conformité (SOC 2, ISO 27001, etc.)."></div>
+          
+          <div data-service-id="ttx" data-requirements="Taille de l&#39;équipe : 5-10 participants recommandés. Durée : 3 heures recommandées, 6 heures maximum. Accès à vos développeurs ou ingénieurs en sécurité pour développer l&#39;exercice et jouer l&#39;exercice. Requis : Accès à votre playbook de réponse aux incidents, parties prenantes clés disponibles, système de réunion virtuelle."></div>
+          
+          <div data-service-id="training" data-requirements="Taille de l&#39;équipe : nombre de participants. Durée souhaitée : 2 à 8 heures par atelier. Requis : Liste des technologies et langages utilisés, sujets de formation préférés. Optionnel : Accès en lecture seule au dépôt de code ou à un environnement de démonstration pour examiner des cas réels et leurs corrections.
+"></div>
+          
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+      </form>
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+<!-- Privacy Section -->
+<section class="content-section" id="privacy" aria-labelledby="privacy-heading" aria-hidden="true">
+  <div class="container">
+    
+    
+    <h2 id="privacy-heading" class="section-heading">Politique de Confidentialité</h2>
+    <div class="section-content">
+      
+      <p class="privacy-meta">Dernière mise à jour : 12 Novembre, 2025</p>
+      
+      
+      
+      <div class="privacy-intro">
+        <p>Hexius Technology (« nous », « notre » ou « nos ») s’engage à protéger votre vie privée. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web ou utilisez nos services.</p>
+
+      </div>
+      
+      
+      
+      <div class="privacy-section">
+        <h3>Informations que nous collectons</h3>
+        <div class="privacy-content">
+          <p>Nous collectons les informations que vous nous fournissez directement, notamment :</p>
+
+<ul>
+  <li><strong>Informations de contact</strong> : Nom, adresse e-mail, nom de l’entreprise et numéro de téléphone lorsque vous nous contactez ou demandez des informations sur nos services</li>
+  <li><strong>Demandes de services</strong> : Informations sur vos besoins en cybersécurité, détails de l’application et exigences du projet</li>
+  <li><strong>Dossiers de communication</strong> : Dossiers de correspondance, y compris les e-mails et messages envoyés via notre formulaire de contact</li>
+  <li><strong>Données d’utilisation</strong> : Informations sur la façon dont vous accédez et utilisez notre site web, y compris l’adresse IP, le type de navigateur et les pages visitées</li>
+</ul>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Comment nous utilisons vos informations</h3>
+        <div class="privacy-content">
+          <p>Nous utilisons les informations que nous collectons pour :</p>
+
+<ul>
+  <li>Répondre à vos demandes et fournir des informations sur nos services</li>
+  <li>Fournir des services de cybersécurité, y compris des exercices sur table, des tests d’intrusion et des formations</li>
+  <li>Communiquer avec vous concernant vos projets et nos services</li>
+  <li>Améliorer notre site web et nos services</li>
+  <li>Respecter les obligations légales et protéger nos droits</li>
+</ul>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Partage et divulgation d'informations</h3>
+        <div class="privacy-content">
+          <p>Nous ne vendons, n’échangeons ni ne louons vos informations personnelles à des tiers. Nous ne partageons vos informations que dans les circonstances suivantes :</p>
+
+<ul>
+  <li><strong>Fournisseurs de services</strong> : Nous pouvons partager des informations avec des fournisseurs de services de confiance qui nous aident à exploiter notre site web et à mener nos activités, sous réserve d’accords de confidentialité</li>
+  <li><strong>Exigences légales</strong> : Nous pouvons divulguer des informations si la loi l’exige ou en réponse à des demandes légales valides</li>
+  <li><strong>Transferts d’entreprise</strong> : En cas de fusion, d’acquisition ou de vente d’actifs, vos informations peuvent être transférées dans le cadre de cette transaction</li>
+</ul>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Sécurité des données</h3>
+        <div class="privacy-content">
+          <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre l’accès non autorisé, l’altération, la divulgation ou la destruction. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n’est sécurisée à 100 %.</p>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Conservation des données</h3>
+        <div class="privacy-content">
+          <p>Nous conservons vos informations personnelles aussi longtemps que nécessaire pour remplir les objectifs décrits dans cette Politique de Confidentialité, sauf si une période de conservation plus longue est requise ou autorisée par la loi.</p>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Cookies et technologies de suivi</h3>
+        <div class="privacy-content">
+          <p>Notre site ne utilise actuellement aucune technologie de suivi.</p>
+
+        </div>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>Modifications de cette Politique de Confidentialité</h3>
+        <div class="privacy-content">
+          <p>Nous pouvons mettre à jour cette Politique de Confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page et en mettant à jour la date de « Dernière mise à jour ».</p>
+
+        </div>
+      </div>
+      
+      
+      
+      <div class="privacy-contact">
+        <h3>Contact</h3>
+        <p>Pour toute question concernant cette politique de confidentialité, veuillez nous contacter à :</p>
+        <p><a href="mailto:contact@hexius.com">contact@hexius.com</a></p>
+      </div>
+      
+    </div>
+    <button class="back-to-top" aria-label="Retour en haut">↑ Retour en haut</button>
+  </div>
+</section>
+
+
+
+
+  </main>
+  
+  <!-- Footer -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="/assets/logo_text.png" alt="Hexius Technology - Logo" class="logo-footer" height="32" loading="lazy">
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          
+          
+          
+          <li><a href="#pentest">Pentest</a></li>
+          
+          <li><a href="#ttx">TTX</a></li>
+          
+          <li><a href="#training">Formation</a></li>
+          
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#privacy">Confidentialité</a></li>
+        </ul>
+      </nav>
+      <p class="footer-note">Support bilingue (EN/FR). Clients UE : conformité GDPR/ISO 27001.</p>
+      <p class="footer-copyright">&copy; 2026 Hexius Technology. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  
+  <!-- Inject baseurl for JavaScript -->
+  <script>
+    window.SITE_BASEURL = '';
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
+
