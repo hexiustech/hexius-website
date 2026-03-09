@@ -1197,17 +1197,9 @@ a {
   z-index: 1;
 }
 
-/* vciso: 3-column grid so radar sticks in left column, container stays 1140px */
+/* vciso: overflow visible so the floated sidebar can extend into the gutter */
 #vciso {
-  display: grid;
-  grid-template-columns: minmax(0, calc((100vw - 1140px) / 2)) 1fr minmax(0, calc((100vw - 1140px) / 2));
-  overflow: visible; /* required for position: sticky on radar */
-}
-#vciso .vciso-radar-wrap { grid-column: 1; }
-#vciso .container { grid-column: 2; min-width: 0; }
-@media (max-width: 1100px) {
-  #vciso { display: block; }
-  #vciso .container { grid-column: auto; }
+  overflow: visible;
 }
 
 
@@ -2375,32 +2367,24 @@ a {
 }
 
 /* ============================================
-   20. vCISO — Sticky Radar Sidebar Layout
+   20. vCISO — Left-gutter Radar Visual
    ============================================ */
 
-#vciso .section-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 56px;
-}
-
 .vciso-sidebar {
-  width: 240px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 120px;
-  align-self: flex-start;
-}
-
-.vciso-content-body {
-  flex: 1;
-  min-width: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: clamp(280px, calc((100vw - 1140px) / 2), 460px);
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
 }
 
 @media (max-width: 1100px) {
-  #vciso .section-content {
-    display: block;
-  }
   .vciso-sidebar {
     display: none;
   }
@@ -4510,7 +4494,7 @@ a {
 .attack-scenario,
 #osint-graph-canvas,
 .vciso-sidebar {
-  opacity: 0.2;
+  opacity: 0.4;
   transition: opacity 0.4s ease;
   pointer-events: auto !important;
 }

@@ -707,7 +707,7 @@
     delay(run, t + 1200);
   }
 
-  document.addEventListener('hexius:section', function (e) {
+  window.addEventListener('hexius:section', function (e) {
     if (e && e.detail) {
       if (e.detail.id === 'pentest') {
         run();
@@ -722,6 +722,8 @@
   }
 }());
 </script>
+
+  
 
   
 
@@ -754,7 +756,6 @@
     </div>
 
     <div class="section-content">
-      
 
       <p class="lead">We go beyond vulnerability scanning to validate real abuse paths, fraud risks, and exploitable logic flaws in your application. Our penetration testing methodology is technical, business-context-aware, and built for developers.</p>
 
@@ -1047,8 +1048,6 @@
           Request a Quote
         </a>
       </div>
-
-      
 
     </div>
 
@@ -1543,7 +1542,7 @@
     if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); togglePause(); }
   });
 
-  document.addEventListener('hexius:section', function (e) {
+  window.addEventListener('hexius:section', function (e) {
     if (!e || !e.detail) return;
     if (e.detail.id === 'ttx') {
       paused = false;
@@ -1559,6 +1558,8 @@
   if (window.location.hash === '#ttx') { setTimeout(run, 300); }
 }());
 </script>
+
+  
 
   
 
@@ -1589,7 +1590,6 @@
     </div>
 
     <div class="section-content">
-      
 
       <p class="lead">A facilitated assume-breach exercise where your team investigates, decides, and acts against a real APT scenario mapped to your stack. Not a training course, but a live decision-making simulation that validates playbooks, exposes gaps, and builds incident response muscle memory for cybersecurity teams in Quebec and Canada.</p>
 
@@ -1895,8 +1895,6 @@
         </a>
       </div>
 
-      
-
     </div>
 
     <button class="back-to-top"
@@ -2041,6 +2039,8 @@
   </div>
   
 
+  
+
   <div class="container">
 
     <div class="section-header-row">
@@ -2066,7 +2066,6 @@
     </div>
 
     <div class="section-content">
-      
 
       <p class="lead">We test the people, not just the systems. Our social engineering engagements target your highest-risk human attack surfaces: helpdesk, executives, login flows, and vendor contacts, using pretexts built from your actual org structure, tooling, and threat exposure. No generic phishing templates. No click-rate-only reports.</p>
 
@@ -2370,8 +2369,6 @@
         </a>
       </div>
 
-      
-
     </div>
 
     <button class="back-to-top"
@@ -2424,6 +2421,8 @@
 
   
 
+  
+
   <div class="container">
 
     <div class="section-header-row">
@@ -2449,7 +2448,6 @@
     </div>
 
     <div class="section-content">
-      
 
       <p class="lead">We map exactly what attackers see before they target you: people, systems, and data. Findings are organized by exploitability and translated into real business risk with prioritized remediation steps.</p>
 
@@ -2777,8 +2775,6 @@
         </a>
       </div>
 
-      
-
     </div>
 
     <button class="back-to-top"
@@ -2830,6 +2826,8 @@
 
   
 
+  
+
   <div class="container">
 
     <div class="section-header-row">
@@ -2855,7 +2853,6 @@
     </div>
 
     <div class="section-content">
-      
 
       <p class="lead">Practical, hands-on AppSec training built around your stack and real vulnerabilities, not generic security awareness slides. Developers learn to exploit and fix OWASP Top 10 issues in realistic code examples. Tailored for your language, framework, and risk profile. Remote-first. 2 to 8 hours per session.
 </p>
@@ -3396,8 +3393,6 @@ module.exports = { stripe };
         </a>
       </div>
 
-      
-
     </div>
 
     <button class="back-to-top"
@@ -3448,34 +3443,9 @@ module.exports = { stripe };
 
   
 
-  <div class="container">
-
-    <div class="section-header-row">
-      <div class="section-header-row__title">
-        <span class="section-eyebrow">Advisor / vCISO</span>
-        <h2 id="vciso-heading" class="section-heading">
-          vCISO and Security Advisory: Fractional CISO, Security Roadmap, and Compliance Advisory
-        </h2>
-      </div>
-      <div class="section-cta">
-        
-        <a href="/#vciso-methodology"
-           class="btn btn-ghost"
-           >
-          See what we cover
-        </a>
-        
-        <a href="#contact"
-           class="btn btn-primary">
-          Book a call
-        </a>
-      </div>
-    </div>
-
-    <div class="section-content">
-      
-      <div class="vciso-sidebar" aria-hidden="true">
-        <div class="vciso-radar-wrap" aria-hidden="true">
+  
+  <div class="vciso-sidebar" aria-hidden="true">
+    <div class="vciso-radar-wrap" aria-hidden="true">
   <svg id="vciso-radar-svg" viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg" role="presentation">
     <!-- Grid rings (points set by JS) -->
     <polygon class="vr-ring" id="vr-ring-0"/>
@@ -3512,19 +3482,40 @@ module.exports = { stripe };
 
 <style>
 .vciso-radar-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   z-index: 0;
   pointer-events: none;
   overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.vciso-radar-wrap--top {
+  position: absolute;
+  top: 140px;
+  left: 0;
+  width: 100%;
+}
+
+.vciso-radar-wrap--fixed {
+  position: fixed;
+  top: 140px;
+  left: 0;
+  width: clamp(280px, calc((100vw - 1140px) / 2), 460px);
+  padding: 0 20px;
+}
+
+.vciso-radar-wrap--bottom {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  width: 100%;
 }
 
 #vciso-radar-svg {
   display: block;
   width: 100%;
-  max-width: 280px;
+  max-width: 360px;
   height: auto;
   margin: 0 auto;
   overflow: visible;
@@ -3576,10 +3567,12 @@ module.exports = { stripe };
 (function () {
   var svg = document.getElementById('vciso-radar-svg');
   var section = document.getElementById('vciso');
+  var radarWrap = document.querySelector('.vciso-radar-wrap');
   if (!svg || !section) return;
 
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var NAV_OFFSET = 96;
+  var STICKY_TOP = 140;
 
   var CX = 110, CY = 112, MAX_R = 78;
   var labels  = ['GOVERNANCE', 'IR READY', 'APPSEC', 'COMPLIANCE', 'RISK MGMT', 'VENDOR'];
@@ -3658,6 +3651,15 @@ module.exports = { stripe };
     return Math.max(0, Math.min(1, progress));
   }
 
+  var currentMode = '';
+
+  function setMode(mode) {
+    if (mode === currentMode) return;
+    radarWrap.classList.remove('vciso-radar-wrap--top', 'vciso-radar-wrap--fixed', 'vciso-radar-wrap--bottom');
+    radarWrap.classList.add('vciso-radar-wrap--' + mode);
+    currentMode = mode;
+  }
+
   function updateFromScroll() {
     var progress = getScrollProgress();
     setFill(progress);
@@ -3669,10 +3671,22 @@ module.exports = { stripe };
       stateLbl.style.transition = 'opacity 0.4s ease';
       stateLbl.style.opacity = progress > 0.85 ? '1' : '0';
     }
+    if (radarWrap) {
+      var sRect = section.getBoundingClientRect();
+      var wrapH = radarWrap.offsetHeight || 260;
+      if (sRect.top >= 0) {
+        setMode('top');
+      } else if (sRect.bottom < wrapH + STICKY_TOP + 48) {
+        setMode('bottom');
+      } else {
+        setMode('fixed');
+      }
+    }
   }
 
   function init() {
     setFill(0);
+    if (radarWrap) setMode('top');
     if (fillEl) fillEl.classList.remove('vr-fill--pulse');
     if (stateLbl) stateLbl.style.opacity = '0';
 
@@ -3680,7 +3694,6 @@ module.exports = { stripe };
       setFill(1);
       if (fillEl) fillEl.classList.add('vr-fill--pulse');
       if (stateLbl) stateLbl.style.opacity = '1';
-      return;
     }
 
     updateFromScroll();
@@ -3688,7 +3701,7 @@ module.exports = { stripe };
     window.addEventListener('resize', updateFromScroll);
   }
 
-  document.addEventListener('hexius:section', function (e) {
+  window.addEventListener('hexius:section', function (e) {
     if (e && e.detail && e.detail.id === 'vciso') {
       updateFromScroll();
     }
@@ -3702,9 +3715,34 @@ module.exports = { stripe };
 }());
 </script>
 
+  </div>
+  
+
+  <div class="container">
+
+    <div class="section-header-row">
+      <div class="section-header-row__title">
+        <span class="section-eyebrow">Advisor / vCISO</span>
+        <h2 id="vciso-heading" class="section-heading">
+          vCISO and Security Advisory: Fractional CISO, Security Roadmap, and Compliance Advisory
+        </h2>
       </div>
-      <div class="vciso-content-body">
-      
+      <div class="section-cta">
+        
+        <a href="/#vciso-methodology"
+           class="btn btn-ghost"
+           >
+          See what we cover
+        </a>
+        
+        <a href="#contact"
+           class="btn btn-primary">
+          Book a call
+        </a>
+      </div>
+    </div>
+
+    <div class="section-content">
 
       <p class="lead">Security leadership without a full-time hire. We act as your embedded security leader: building your roadmap, managing risk, preparing for compliance, and owning your security program, scoped to your maturity and goals.</p>
 
@@ -4041,10 +4079,6 @@ module.exports = { stripe };
         </a>
       </div>
 
-      
-      </div><!-- vciso-content-body -->
-      
-
     </div>
 
     <button class="back-to-top"
@@ -4324,7 +4358,9 @@ module.exports = { stripe };
         <p class="about-hero-label">[ ABOUT ]</p>
         <h1 id="about-heading" class="about-hero-headline">WE THINK<br>LIKE<br>ATTACKERS.<br>WE WORK<br>FOR YOU.</h1>
         <p class="about-hero-sub">Quebec-based. Bilingual. 20+ years of offensive security expertise. Built for organizations that can't afford to learn the hard way.</p>
+        
         <a href="#contact" class="about-hero-cta">Book a call &rarr;</a>
+        
       </div>
     </div>
 
@@ -4690,9 +4726,11 @@ module.exports = { stripe };
       
 
       <!-- CTA -->
+      
       <div style="margin-top: var(--spacing-lg);">
         <a href="#contact" class="btn btn-primary">Book a call</a>
       </div>
+      
 
     </div>
 

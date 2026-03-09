@@ -81,6 +81,11 @@
       });
     }
 
+    // Pre-fill contact form service dropdown based on source section
+    if (sectionId === 'contact') {
+      prefillContactService(state.currentSection);
+    }
+
     // Update state
     state.currentSection = sectionId;
 
@@ -300,6 +305,24 @@
     const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
     mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
     navLinksContainer.classList.toggle('open');
+  }
+
+  /**
+   * Pre-fill the contact form service dropdown based on the source section.
+   * Service sections (pentest, ttx, etc.) select the matching option;
+   * non-service sections (about, why, null) keep the default "General Inquiry".
+   */
+  function prefillContactService(sourceSection) {
+    var serviceSelect = document.querySelector('select[name="service"]');
+    if (!serviceSelect) return;
+
+    var matchingOption = serviceSelect.querySelector('option[value="' + sourceSection + '"]');
+    if (sourceSection && matchingOption) {
+      serviceSelect.value = sourceSection;
+    } else {
+      serviceSelect.value = '';
+    }
+    serviceSelect.dispatchEvent(new Event('change'));
   }
 
   /**
