@@ -24,6 +24,7 @@
   const heroServiceCards = document.querySelectorAll('.hero-service-card');
   const servicesTilesSection = document.getElementById('services');
   const contentSections = document.querySelectorAll('.content-section');
+  const homePanels = document.querySelectorAll('.home-panel');
   const navLinks = document.querySelectorAll('.nav-link');
   const backToTopButtons = document.querySelectorAll('.back-to-top');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -55,44 +56,36 @@
       section.classList.add('hidden');
     });
 
+    // Hide home-only panels (zine, CTA)
+    homePanels.forEach(panel => panel.classList.add('hidden'));
+
     // Show target section
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
       targetSection.setAttribute('aria-hidden', 'false');
       targetSection.classList.remove('hidden');
       
-      // Wait for layout to update, then scroll to show eyebrow text above the heading
-      setTimeout(() => {
-        const eyebrow = targetSection.querySelector('.eyebrow');
-        const heading = targetSection.querySelector('h2');
-        
-        // Use eyebrow if available, otherwise use heading
-        const scrollTarget = eyebrow || heading;
-        if (scrollTarget) {
-          // Calculate offset to account for navbar (72px) and add extra padding for visibility
+      // Wait for layout to update, then scroll section top just below the fixed navbar
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
           const navbarHeight = 72;
-          const offset = navbarHeight + 60; // Increased padding to show eyebrow fully
-          
-          // Get the position of the element
-          const elementPosition = scrollTarget.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - offset;
-          
-          // Scroll to the calculated position
+          const sectionTop = targetSection.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
-            top: offsetPosition,
+            top: Math.max(0, sectionTop - navbarHeight),
             behavior: 'smooth'
           });
-          
-          // Focus the heading for accessibility
-          if (heading) {
-            heading.focus();
-          }
-        }
-      }, 10);
+
+          const heading = targetSection.querySelector('h1, h2');
+          if (heading) heading.focus({ preventScroll: true });
+        });
+      });
     }
 
     // Update state
     state.currentSection = sectionId;
+
+    // Notify effect scripts (osint-scan, osint-graph, attack-scenario)
+    window.dispatchEvent(new CustomEvent('hexius:section', { detail: { id: sectionId } }));
 
     // Update active nav link
     updateActiveNavLink(sectionId);
@@ -103,8 +96,11 @@
 
   /**
    * Show hero and hide all content sections
+   * @param {Object} [options]
+   * @param {boolean} [options.scrollToBreachRehearsal] - If true, scroll to breach-rehearsal instead of top
    */
-  function showHero() {
+  function showHero(options) {
+    options = options || {};
     // Hide all content sections
     contentSections.forEach(section => {
       section.setAttribute('aria-hidden', 'true');
@@ -121,17 +117,29 @@
       servicesTilesSection.setAttribute('aria-hidden', 'false');
       servicesTilesSection.classList.remove('hidden');
     }
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Remove hash
-    if (window.location.hash) {
-      history.replaceState(null, '', window.location.pathname);
+
+    // Show home-only panels (zine, breach-rehearsal, etc.)
+    homePanels.forEach(panel => panel.classList.remove('hidden'));
+
+    if (options.scrollToBreachRehearsal) {
+      const el = document.getElementById('breach-rehearsal');
+      if (el) {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    } else {
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Remove hash
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+      }
     }
 
     state.currentSection = null;
-    
+    window.dispatchEvent(new CustomEvent('hexius:section', { detail: { id: null } }));
+
     // Remove active state from all nav links when showing hero
     updateActiveNavLink(null);
     
@@ -179,12 +187,38 @@
     const serviceIds = Array.from(contentSections)
       .map(section => section.id)
       .filter(id => id && id !== 'why' && id !== 'contact' && id !== 'privacy');
-    
+
     const validSections = [...serviceIds, 'why', 'contact', 'privacy'];
-    
+
+    // 'breach-rehearsal' is in home panels — show hero view and scroll to it
+    if (hash === 'breach-rehearsal') {
+      showHero({ scrollToBreachRehearsal: true });
+      return;
+    }
+
     if (hash && validSections.includes(hash)) {
       showSection(hash);
     } else {
+      // Sub-section anchor (e.g. #ttx-methodology, #pentest-methodology) — show parent section then scroll
+      const anchorEl = document.getElementById(hash);
+      if (anchorEl) {
+        const parentSection = anchorEl.closest('.content-section');
+        if (parentSection && validSections.includes(parentSection.id)) {
+          const navbarHeight = 72;
+          const scrollToAnchor = function () {
+            const top = anchorEl.getBoundingClientRect().top + window.scrollY - navbarHeight;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          };
+          if (state.currentSection === parentSection.id) {
+            // Already on this section — scroll directly, no section switch
+            scrollToAnchor();
+          } else {
+            showSection(parentSection.id);
+            setTimeout(scrollToAnchor, 350);
+          }
+          return;
+        }
+      }
       showHero();
     }
   }
@@ -197,8 +231,8 @@
     const sectionId = tile.getAttribute('data-section');
     
     if (sectionId) {
-      window.location.hash = sectionId;
-      handleHashChange();
+      history.pushState(null, '', '#' + sectionId);
+      showSection(sectionId);
     }
   }
 
@@ -215,13 +249,18 @@
       .map(section => section.id)
       .filter(id => id && id !== 'why' && id !== 'contact' && id !== 'privacy');
     const validSections = [...serviceIds, 'why', 'contact', 'privacy'];
-    
-    if (sectionId && validSections.includes(sectionId)) {
-      window.location.hash = sectionId;
-      handleHashChange();
+
+    window.umami && window.umami.track('nav-click', { section: sectionId });
+
+    if (sectionId === 'breach-rehearsal') {
+      history.pushState(null, '', window.location.pathname + '#breach-rehearsal');
+      showHero({ scrollToBreachRehearsal: true });
+    } else if (sectionId && validSections.includes(sectionId)) {
+      history.pushState(null, '', '#' + sectionId);
+      showSection(sectionId);
     } else if (href === '#contact') {
-      window.location.hash = 'contact';
-      handleHashChange();
+      history.pushState(null, '', '#contact');
+      showSection('contact');
     }
     
     // Close mobile menu if open
@@ -235,7 +274,12 @@
    */
   function handleBackToTop(event) {
     event.preventDefault();
-    showHero();
+    const section = event.currentTarget.closest('section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   /**
@@ -340,7 +384,8 @@
       company: 'entry.46439575',    // "Entreprise" / "Company" (first field)
       company2: 'entry.1960370376', // "Entreprise" / "Company" (second field - required)
       service: 'entry.610128610',    // "Service of Interest" / "Service d'Intérêt"
-      message: 'entry.835111868'     // "Message"
+      message: 'entry.835111868',    // "Message"
+      consent: 'entry.2115631709'    // "Contacter dans le future"
     }
   };
 
@@ -436,6 +481,7 @@
     const company = (formData.get('company') || '').trim();
     const service = formData.get('service') || '';
     const message = (formData.get('message') || '').trim();
+    const consentChecked = formData.get('consent') ? 'yes' : 'no';
     
     // Validate required fields
     if (!name || !email || !company || !message) {
@@ -475,7 +521,8 @@
         [GOOGLE_FORM_CONFIG.entryIds.company]: company,      // First company field
         [GOOGLE_FORM_CONFIG.entryIds.company2]: company,    // Second company field (required)
         [GOOGLE_FORM_CONFIG.entryIds.service]: serviceValue,
-        [GOOGLE_FORM_CONFIG.entryIds.message]: message
+        [GOOGLE_FORM_CONFIG.entryIds.message]: message,
+        [GOOGLE_FORM_CONFIG.entryIds.consent]: consentChecked
       };
       
       // Log submission for debugging - check console to verify entry IDs and values
@@ -561,6 +608,7 @@
       const successMsg = document.documentElement.lang === 'fr'
         ? 'Merci ! Votre message a été envoyé avec succès.'
         : 'Thank you! Your message has been submitted successfully.';
+      window.umami && window.umami.track('contact-submit');
       showFormFeedback('success', successMsg);
       
       // Reset form
@@ -733,6 +781,118 @@
   }
 
   /**
+   * IntersectionObserver — scroll-triggered fade-in for .scroll-fade elements
+   */
+  function initScrollFade() {
+    if (!window.IntersectionObserver) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    // Observe elements already in DOM; also re-scan when sections are shown
+    function observeAll() {
+      document.querySelectorAll('.scroll-fade').forEach(function (el) {
+        observer.observe(el);
+      });
+    }
+
+    observeAll();
+
+    // Re-scan each time a section becomes visible
+    var origShowSection = showSection;
+    showSection = function (id) {
+      origShowSection(id);
+      setTimeout(observeAll, 50);
+    };
+  }
+
+  /**
+   * Scope Tabs — BLACK BOX / GREY BOX / WHITE BOX toggle
+   * Expects: <button class="scope-tab" data-tab="grey"> and <div class="scope-panel" data-panel="grey">
+   */
+  function initScopeTabs() {
+    var tabBtns   = document.querySelectorAll('.scope-tab');
+    var tabPanels = document.querySelectorAll('.scope-panel');
+
+    if (!tabBtns.length) return;
+
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-tab');
+
+        tabBtns.forEach(function (b) { b.classList.remove('active'); });
+        tabPanels.forEach(function (p) { p.classList.remove('active'); });
+
+        btn.classList.add('active');
+        var panel = document.querySelector('.scope-panel[data-panel="' + target + '"]');
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    // Activate first tab by default
+    if (tabBtns[0]) tabBtns[0].click();
+  }
+
+  /**
+   * Glitch headline — add .glitch-play when .attackers-headline scrolls into view.
+   */
+  function initHeadlineGlitch() {
+    var headline = document.querySelector('.attackers-headline');
+    if (!headline || !window.IntersectionObserver) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        headline.classList.add('glitch-play');
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(headline);
+  }
+
+  /**
+   * Count-up animation for stat cards in the attackers section.
+   * Triggers once when .attackers-stats scrolls into view.
+   */
+  function initStatCountUp() {
+    var statsPanel = document.querySelector('.attackers-stats');
+    if (!statsPanel || !window.IntersectionObserver) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        statsPanel.querySelectorAll('.stat-number[data-count]').forEach(function(el) {
+          var target   = parseInt(el.dataset.count, 10);
+          var unit     = el.querySelector('.stat-unit');
+          var unitHTML = unit ? unit.outerHTML : '';
+          var duration = 1400;
+          var start    = performance.now();
+
+          function tick(now) {
+            var elapsed  = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased    = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            el.innerHTML = Math.round(eased * target) + unitHTML;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(statsPanel);
+  }
+
+  /**
    * Initialize event listeners
    */
   function init() {
@@ -753,8 +913,8 @@
         e.preventDefault();
         const sectionId = card.getAttribute('data-section');
         if (sectionId) {
-          window.location.hash = sectionId;
-          handleHashChange();
+          history.pushState(null, '', '#' + sectionId);
+          showSection(sectionId);
         }
       });
       card.addEventListener('keydown', (e) => {
@@ -762,8 +922,8 @@
           e.preventDefault();
           const sectionId = card.getAttribute('data-section');
           if (sectionId) {
-            window.location.hash = sectionId;
-            handleHashChange();
+            history.pushState(null, '', '#' + sectionId);
+            showSection(sectionId);
           }
         }
       });
@@ -803,12 +963,13 @@
 
     // Service buttons in hero
     serviceButtons.forEach(btn => {
+      if (btn.classList.contains('hero-service-card')) return; // already handled above
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const sectionId = btn.getAttribute('data-section');
         if (sectionId) {
-          window.location.hash = sectionId;
-          handleHashChange();
+          history.pushState(null, '', '#' + sectionId);
+          showSection(sectionId);
         }
       });
     });
@@ -832,9 +993,47 @@
       handleServiceSelection();
     }
 
+    // Umami tracking — hero CTAs
+    var primaryCta = document.querySelector('.btn-signal');
+    if (primaryCta) {
+      primaryCta.addEventListener('click', function () {
+        window.umami && window.umami.track('cta-primary');
+      });
+    }
+    var secondaryCta = document.querySelector('.hero-ctas .btn-signal-sim');
+    if (secondaryCta) {
+      secondaryCta.addEventListener('click', function () {
+        window.umami && window.umami.track('cta-secondary');
+      });
+    }
+
+    // Ticker pause
+    var tickerPauseBtn = document.querySelector('.ticker-pause');
+    var tickerTrack = document.querySelector('.threat-ticker-track');
+    if (tickerPauseBtn && tickerTrack) {
+      tickerPauseBtn.addEventListener('click', function () {
+        var paused = tickerPauseBtn.getAttribute('aria-pressed') === 'true';
+        paused = !paused;
+        tickerPauseBtn.setAttribute('aria-pressed', String(paused));
+        tickerTrack.style.animationPlayState = paused ? 'paused' : 'running';
+      });
+    }
+
     // Hash change events
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Scroll-triggered animations
+    initScrollFade();
+
+    // Stat count-up animation
+    initStatCountUp();
+
+    // Glitch headline on scroll-in
+    initHeadlineGlitch();
+
+    // Scope tab UI (pentest page)
+    initScopeTabs();
 
     // Initial load - check hash
     handleHashChange();

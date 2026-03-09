@@ -1,12 +1,19 @@
+
 {
   "name": "Hexius Technology",
   "short_name": "Hexius",
-  "description": "Simulate. Assess. Strengthen. — Realistic cybersecurity services.",
+  "description": "Simulate. Assess. Strengthen. | Realistic cybersecurity services.",
   "start_url": "/en/",
   "display": "browser",
   "background_color": "#0B0D10",
   "theme_color": "#0B0D10",
   "icons": [
-    { "src": "/assets/logo.png", "sizes": "any", "type": "image/png" }
+    
+    {
+      "src": "/assets/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+    
   ]
 }

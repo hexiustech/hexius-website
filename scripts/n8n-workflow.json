@@ -1,0 +1,103 @@
+{
+    "name": "Hexius — Threat Feed Scraper",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [{ "field": "hours", "hoursInterval": 6 }]
+          }
+        },
+        "id": "schedule-trigger",
+        "name": "Every 6 Hours",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1,
+        "position": [240, 300]
+      },
+      {
+        "parameters": {
+          "pythonCode": "import json\nimport os\nimport requests\nimport feedparser\nfrom datetime import datetime, timezone, timedelta\n\nMAX_CVE           = 3\nMAX_CISA          = 2\nMAX_NEWS          = 3\nCVSS_MIN          = 8.0\nCVE_LOOKBACK_DAYS = 7\nREQUEST_TIMEOUT   = 12\nHIBP_API_KEY      = os.getenv('HIBP_API_KEY', '')\n\nSTATIC_ITEMS = [\n  {'icon':'ok',     'text':'Avg TTX exercise reduces IR time by 40%',                             'source':'static','category':'hexius'},\n  {'icon':'ok',     'text':'OWASP Top 10 covers 90% of web app vulns — our pentest goes further', 'source':'static','category':'hexius'},\n  {'icon':'accent', 'text':'Average breach cost: $4.88M USD — IBM 2024',                          'source':'ibm',   'category':'stat'},\n  {'icon':'accent', 'text':'83% of breaches involve a human element — Verizon DBIR 2024',         'source':'verizon','category':'stat'},\n  {'icon':'warn',   'text':'74% of orgs lack a tested incident response plan',                     'source':'static','category':'stat'},\n  {'icon':'accent', 'text':'Mean time to identify a breach: 194 days (industry avg)',             'source':'ibm',   'category':'stat'},\n  {'icon':'warn',   'text':'60% of SMEs close within 6 months of a cyberattack',                  'source':'static','category':'stat'},\n  {'icon':'accent', 'text':'Phishing accounts for 36% of all data breaches',                      'source':'verizon','category':'stat'},\n  {'icon':'warn',   'text':'Only 35% of employees receive regular security training',              'source':'static','category':'stat'},\n  {'icon':'sim',    'text':'Supply chain attacks up 742% since 2019',                             'source':'static','category':'stat'},\n]\n\ndef safe_get(url, **kwargs):\n  try:\n    r = requests.get(url, timeout=REQUEST_TIMEOUT, **kwargs)\n    r.raise_for_status()\n    return r\n  except Exception as e:\n    print(f'[WARN] fetch failed [{url[:60]}]: {e}')\n    return None\n\ndef nvd_severity(score):\n  if score >= 9.0: return 'CRITICAL'\n  if score >= 7.0: return 'HIGH'\n  return 'MEDIUM'\n\ndef fetch_nvd_cves():\n  items = []\n  now   = datetime.now(timezone.utc)\n  start = (now - timedelta(days=CVE_LOOKBACK_DAYS)).strftime('%Y-%m-%dT00:00:00.000')\n  end   = now.strftime('%Y-%m-%dT%H:%M:%S.000')\n  url   = (f'https://services.nvd.nist.gov/rest/json/cves/2.0'\n           f'?pubStartDate={start}&pubEndDate={end}'\n           f'&cvssV3SeverityV2=CRITICAL&resultsPerPage=20')\n  resp = safe_get(url, headers={'Accept': 'application/json'})\n  if not resp: return items\n  try:\n    vulns = resp.json().get('vulnerabilities', [])\n  except Exception as e:\n    print(f'[WARN] NVD parse: {e}'); return items\n  for v in vulns:\n    cve    = v.get('cve', {})\n    cve_id = cve.get('id', 'CVE-????-????')\n    score  = None\n    for key in ('cvssMetricV31', 'cvssMetricV30', 'cvssMetricV2'):\n      mlist = cve.get('metrics', {}).get(key, [])\n      if mlist:\n        score = mlist[0].get('cvssData', {}).get('baseScore')\n        break\n    if score is None or float(score) < CVSS_MIN: continue\n    descs = cve.get('descriptions', [])\n    desc  = next((d['value'] for d in descs if d.get('lang') == 'en'), '')\n    items.append({\n      'icon': 'warn', 'text': f'{cve_id} — CVSS {score} — ',\n      'highlight': nvd_severity(float(score)),\n      'source': 'nvd', 'category': 'cve',\n    })\n    if len(items) >= MAX_CVE: break\n  print(f'[INFO] NVD: {len(items)} CVEs')\n  return items\n\ndef fetch_cisa_kev():\n  items = []\n  url   = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json'\n  resp  = safe_get(url)\n  if not resp: return items\n  try:\n    vulns = sorted(resp.json().get('vulnerabilities', []),\n                   key=lambda x: x.get('dateAdded', ''), reverse=True)\n  except Exception as e:\n    print(f'[WARN] CISA: {e}'); return items\n  for v in vulns[:MAX_CISA]:\n    items.append({\n      'icon': 'warn',\n      'text': f'CISA KEV: {v.get(\"cveID\",\"\")} actively exploited — {v.get(\"vendorProject\",\"\")} {v.get(\"product\",\"\")}',\n      'highlight': 'EXPLOITED', 'source': 'cisa', 'category': 'cve',\n    })\n  print(f'[INFO] CISA: {len(items)} entries')\n  return items\n\nKEYWORDS = ['breach','ransomware','phishing','exploit','vulnerability',\n            'attack','leak','malware','zero-day','critical','APT',\n            'supply chain','data theft','social engineering']\n\ndef fetch_bleepingcomputer():\n  items = []\n  try:\n    feed    = feedparser.parse('https://www.bleepingcomputer.com/feed/')\n    entries = feed.entries[:MAX_NEWS * 4]\n  except Exception as e:\n    print(f'[WARN] BC RSS: {e}'); return items\n  for entry in entries:\n    title = entry.get('title', '').strip()\n    if not title: continue\n    if not any(kw.lower() in title.lower() for kw in KEYWORDS): continue\n    items.append({\n      'icon': 'sim',\n      'text': (title[:88] + '...') if len(title) > 88 else title,\n      'source': 'bleepingcomputer', 'category': 'news',\n      'url': entry.get('link', ''),\n    })\n    if len(items) >= MAX_NEWS: break\n  print(f'[INFO] BleepingComputer: {len(items)} items')\n  return items\n\ndef fetch_hibp():\n  url     = 'https://haveibeenpwned.com/api/v3/breaches'\n  headers = {'hibp-api-key': HIBP_API_KEY} if HIBP_API_KEY else {}\n  resp    = safe_get(url, headers=headers)\n  if not resp: return []\n  try:\n    breaches = resp.json()\n    latest   = sorted(breaches, key=lambda x: x.get('BreachDate',''), reverse=True)\n    name     = latest[0].get('Name','') if latest else ''\n    ct       = f\"{latest[0].get('PwnCount',0):,}\" if latest else ''\n    print(f'[INFO] HIBP: {len(breaches)} breaches')\n    return [{'icon':'accent',\n             'text': f'HIBP: {len(breaches)} public breaches indexed — latest: {name} ({ct} accounts)',\n             'source':'hibp','category':'stat'}]\n  except Exception as e:\n    print(f'[WARN] HIBP: {e}'); return []\n\nnow  = datetime.now(timezone.utc)\nlive = fetch_nvd_cves() + fetch_cisa_kev() + fetch_bleepingcomputer() + fetch_hibp()\n\nseen, deduped = set(), []\nfor item in live:\n  key = item['text'][:40]\n  if key not in seen:\n    seen.add(key)\n    deduped.append(item)\n\nfeed = {\n  'generated_at': now.isoformat(),\n  'expires_at':   (now + timedelta(hours=6)).isoformat(),\n  'live_count':   len(deduped),\n  'static_count': len(STATIC_ITEMS),\n  'items':        deduped + STATIC_ITEMS,\n}\n\nprint(f'[INFO] Feed ready: {len(feed[\"items\"])} items ({len(deduped)} live + {len(STATIC_ITEMS)} static)')\nreturn [{'json': feed}]\n"
+        },
+        "id": "run-scraper",
+        "name": "Run Scraper (Python)",
+        "type": "n8n-nodes-base.python",
+        "typeVersion": 1,
+        "position": [480, 300]
+      },
+      {
+        "parameters": {
+          "jsCode": "const feed = $input.first().json;\nconst staticData = this.getWorkflowStaticData('global');\nstaticData.threatFeed  = JSON.stringify(feed);\nstaticData.lastUpdated = feed.generated_at;\nreturn [{ json: { success: true, item_count: feed.items.length, generated_at: feed.generated_at } }];"
+        },
+        "id": "store-feed",
+        "name": "Store Feed in Static Data",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [720, 300]
+      },
+      {
+        "parameters": {
+          "httpMethod": "GET",
+          "path": "hexius-threat-feed",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "id": "webhook-trigger",
+        "name": "GET /hexius-threat-feed",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 1,
+        "position": [240, 520],
+        "webhookId": "hexius-threat-feed"
+      },
+      {
+        "parameters": {
+          "jsCode": "const staticData = this.getWorkflowStaticData('global');\nconst raw = staticData.threatFeed;\n\nif (!raw) {\n  return [{ json: {\n    generated_at: new Date().toISOString(),\n    expires_at:   new Date().toISOString(),\n    live_count: 0, static_count: 0, fallback: true,\n    items: [\n      { icon:'accent', text:'Average breach cost: $4.88M USD — IBM 2024',             source:'static', category:'stat'   },\n      { icon:'warn',   text:'74% of orgs lack a tested incident response plan',        source:'static', category:'stat'   },\n      { icon:'ok',     text:'Avg TTX exercise reduces IR time by 40%',                 source:'static', category:'hexius' },\n      { icon:'accent', text:'Mean time to identify a breach: 194 days (industry avg)', source:'ibm',   category:'stat'   },\n      { icon:'warn',   text:'60% of SMEs close within 6 months of a cyberattack',      source:'static', category:'stat'   },\n      { icon:'accent', text:'83% of breaches involve a human element — Verizon DBIR',  source:'verizon',category:'stat'   }\n    ]\n  }}];\n}\n\nreturn [{ json: JSON.parse(raw) }];"
+        },
+        "id": "build-response",
+        "name": "Build Response",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [480, 520]
+      },
+      {
+        "parameters": {
+          "options": {
+            "responseHeaders": {
+              "entries": [
+                { "name": "Content-Type",                "value": "application/json" },
+                { "name": "Access-Control-Allow-Origin", "value": "*" },
+                { "name": "Cache-Control",               "value": "public, max-age=3600" }
+              ]
+            }
+          }
+        },
+        "id": "respond-webhook",
+        "name": "Respond to Webhook",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1,
+        "position": [720, 520]
+      }
+    ],
+    "connections": {
+      "Every 6 Hours": {
+        "main": [[{ "node": "Run Scraper (Python)", "type": "main", "index": 0 }]]
+      },
+      "Run Scraper (Python)": {
+        "main": [[{ "node": "Store Feed in Static Data", "type": "main", "index": 0 }]]
+      },
+      "GET /hexius-threat-feed": {
+        "main": [[{ "node": "Build Response", "type": "main", "index": 0 }]]
+      },
+      "Build Response": {
+        "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "saveManualExecutions": true,
+      "callerPolicy": "workflowsFromSameOwner"
+    },
+    "staticData": null,
+    "tags": ["hexius", "threat-feed", "scraper"],
+    "meta": {
+      "notes": "SETUP:\n1. pip3 install requests feedparser  (on n8n server)\n2. Optional: set HIBP_API_KEY in n8n env vars\n3. Import workflow → activate Webhook → copy production URL\n4. Run schedule trigger manually once to seed the feed\n5. Paste webhook URL into ticker-feed.js"
+    }
+  }

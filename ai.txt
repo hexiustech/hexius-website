@@ -1,0 +1,27 @@
+# ai.txt for Hexius Technology
+# https://hexius.com/ai.txt
+# Reference: https://site.ai.txt.org/
+
+# Organization
+Organization: Hexius Technology
+Contact: contact@hexius.com
+Website: https://hexius.com
+
+# AI Training & Scraping Policy
+Ai-Training: Disallow
+Ai-Scraping: Disallow
+Ai-Search-Snippets: Allow
+Ai-Summarization: Allow
+
+# Scope
+Scope: /*
+
+# Notes
+# This site's content is protected by copyright.
+# AI training on this site's content is not permitted without explicit written consent.
+# Search engines may generate AI-powered snippets and summaries from public pages.
+# Crawler-level enforcement is defined in /robots.txt.
+# For licensing inquiries, contact contact@hexius.com.
+
+# Last updated
+Updated: 2026-03-09
