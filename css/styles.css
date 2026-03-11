@@ -1191,6 +1191,29 @@ a {
   mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 30%, black 70%);
 }
 
+/* Mid-size screens: shrink right image, shift container right to give left panels room */
+@media (max-width: 1920px) and (min-width: 1101px) {
+  .content-section::after {
+    width: 32%;
+    opacity: 0.12;
+  }
+  /* Shift content right only on services that have a left-gutter visual */
+  #pentest > .container,
+  #ttx > .container,
+  #social-engineering > .container,
+  #osint > .container,
+  #vciso > .container {
+    margin-left: clamp(280px, calc((100vw - 1140px) / 2 + 200px), 480px);
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1100px) {
+  .content-section::after {
+    display: none;
+  }
+}
+
 /* Make sure section text sits above the background image */
 .content-section .container {
   position: relative;
@@ -2375,7 +2398,7 @@ a {
   left: 0;
   top: 0;
   bottom: 0;
-  width: clamp(280px, calc((100vw - 1140px) / 2), 460px);
+  width: clamp(200px, calc((100vw - 1140px) / 2), 380px);
   pointer-events: none;
   z-index: 0;
   overflow: visible;
@@ -3477,11 +3500,11 @@ a {
   top: 80px;
   bottom: 0;
   min-height: 900px;
-  width: clamp(400px, calc((100% - 1140px) / 2 + 320px), 600px);
+  width: clamp(260px, calc((100% - 1140px) / 2 + 200px), 480px);
   z-index: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   #osint-graph-canvas {
     display: none;
   }
@@ -3576,7 +3599,7 @@ a {
   left: 0;
   top: 0;
   bottom: 0;
-  width: clamp(380px, calc((100% - 1140px) / 2 + 440px), 600px);
+  width: clamp(260px, calc((100% - 1140px) / 2 + 280px), 500px);
   z-index: 0;
   display: flex;
   flex-direction: column;
@@ -3596,13 +3619,13 @@ a {
   padding: 0 0 10px 0;
   opacity: 0.7;
   width: 100%;
-  max-width: 480px;
+  max-width: 380px;
 }
 
 /* Each panel: hidden until JS adds .visible; fixed height prevents layout shift during typing */
 .attack-panel {
   width: 100%;
-  max-width: 480px;
+  max-width: 380px;
   background: #0C1017;
   border: 1px solid #1A2433;
   border-top: 3px solid var(--signal-social);
@@ -3849,7 +3872,7 @@ a {
 }
 
 /* Hide on narrow viewports where no gutter exists */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .attack-scenario { display: none; }
 }
 
