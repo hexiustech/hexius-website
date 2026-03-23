@@ -916,6 +916,66 @@
   }
 
   /**
+   * Welcome notice — bottom-corner toast, dismissed via localStorage.
+   * Shows after a 3-second delay on first visit. Remembers dismissal.
+   */
+  function initWelcomeNotice() {
+    var STORAGE_KEY = 'hexius_welcome_dismissed';
+    var ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+    var notice = document.getElementById('welcome-notice');
+    var dismissBtn = document.getElementById('welcome-notice-dismiss');
+    var ctaLink = notice ? notice.querySelector('.welcome-notice-cta') : null;
+
+    if (!notice) return;
+
+    try {
+      var dismissedAt = localStorage.getItem(STORAGE_KEY);
+      if (dismissedAt) {
+        if (Date.now() - Number(dismissedAt) < ONE_WEEK_MS) return;
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch (e) {
+      // localStorage unavailable (private browsing, etc.)
+    }
+
+    setTimeout(function () {
+      notice.removeAttribute('hidden');
+      notice.offsetHeight; // force reflow so transition fires
+      notice.classList.add('is-visible');
+    }, 3000);
+
+    function dismiss() {
+      notice.classList.remove('is-visible');
+      notice.classList.add('is-hiding');
+      try {
+        localStorage.setItem(STORAGE_KEY, String(Date.now()));
+      } catch (e) {
+        // silently fail
+      }
+      setTimeout(function () {
+        notice.setAttribute('hidden', '');
+        notice.classList.remove('is-hiding');
+      }, 400);
+    }
+
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', dismiss);
+    }
+
+    if (ctaLink) {
+      ctaLink.addEventListener('click', dismiss);
+    }
+
+    notice.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        dismiss();
+        var main = document.getElementById('main-content');
+        if (main) main.focus({ preventScroll: true });
+      }
+    });
+  }
+
+  /**
    * Initialize event listeners
    */
   function init() {
@@ -1057,6 +1117,9 @@
 
     // Scope tab UI (pentest page)
     initScopeTabs();
+
+    // Welcome notice toast
+    initWelcomeNotice();
 
     // Initial load - check hash
     handleHashChange();

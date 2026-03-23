@@ -4531,12 +4531,112 @@ a {
 }
 
 /* ============================================
-   26. Reduced Motion (WCAG 2.1 SC 2.2.2)
+   26. Welcome Notice — bottom-corner toast
+   ============================================ */
+
+.welcome-notice {
+  position: fixed;
+  top: 90px;
+  right: var(--spacing-md);
+  max-width: 460px;
+  background: var(--panel);
+  border: 1px solid var(--border-bright);
+  border-left: 4px solid var(--signal-build);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-notice[hidden] {
+  display: none;
+}
+
+.welcome-notice.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.welcome-notice.is-hiding {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.welcome-notice-msg {
+  margin: 0;
+  color: var(--text);
+}
+
+.welcome-notice-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.welcome-notice-cta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--signal-build);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.welcome-notice-cta:hover,
+.welcome-notice-cta:focus-visible {
+  border-bottom-color: var(--signal-build);
+}
+
+.welcome-notice-dismiss {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  padding: 8px;
+  line-height: 0;
+  border-radius: 2px;
+  margin-left: auto;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.welcome-notice-dismiss:hover,
+.welcome-notice-dismiss:focus-visible {
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+
+.welcome-notice-dismiss:focus-visible {
+  outline: 2px solid var(--signal-build);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .welcome-notice {
+    top: 80px;
+    right: var(--spacing-sm);
+    left: var(--spacing-sm);
+    max-width: none;
+  }
+}
+
+/* ============================================
+   27. Reduced Motion (WCAG 2.1 SC 2.2.2)
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
 body::before { display: none; }
-  .attack-panel, .scroll-fade { transition: none; opacity: 1; transform: none; }
+  .attack-panel, .scroll-fade, .welcome-notice { transition: none; opacity: 1; transform: none; }
   canvas { display: none; }
   .pentest-chain-wrap,
   .vciso-radar-wrap { display: none; }
