@@ -9,6 +9,12 @@
  * Binds to:
  *   #contact-form  — full lead form (name/email/company/service/message/consent)
  *   #notify-form   — email-only product waitlist (email/consent)
+ *   form[data-lead-form="event-fallback"] — event email-only form (/bonjour/); filler
+ *                                           values from data-filler-* tag the lead + utm_*
+ *                                           params; reveals [data-reveal-on-success] (PDF link)
+ *
+ * Language of feedback messages follows the closest [lang] ancestor of the form,
+ * so a bilingual page can host FR and EN forms side by side.
  */
 (function () {
   'use strict';
@@ -33,7 +39,24 @@
     'training': 'Secure development training / Formation Développement Sécuritaire'
   };
 
-  function isFr() { return document.documentElement.lang === 'fr'; }
+  function isFr(form) {
+    var el = form && form.closest ? form.closest('[lang]') : null;
+    return (el ? el.getAttribute('lang') : document.documentElement.lang) === 'fr';
+  }
+
+  function utmString() {
+    var parts = [];
+    new URLSearchParams(window.location.search).forEach(function (value, key) {
+      if (key.indexOf('utm_') === 0) parts.push(key + '=' + value);
+    });
+    return parts.join('&');
+  }
+
+  function trackName(form) {
+    var kind = form.getAttribute('data-lead-form');
+    if (kind === 'event-fallback') return 'event-checklist-submit';
+    return form.id === 'notify-form' ? 'notify-submit' : 'contact-submit';
+  }
 
   function showFormFeedback(form, type, message) {
     var existing = form.parentNode.querySelector('.form-feedback');
@@ -98,8 +121,10 @@
     function handleSuccess() {
       if (handled) return;
       handled = true;
-      if (window.umami) window.umami.track(form.id === 'notify-form' ? 'notify-submit' : 'contact-submit');
+      if (window.umami) window.umami.track(trackName(form));
       showFormFeedback(form, 'success', successMsg);
+      var reveal = form.parentNode.querySelector('[data-reveal-on-success]');
+      if (reveal) reveal.hidden = false;
       form.reset();
       submitButton.disabled = false;
       submitButton.textContent = originalText;
@@ -109,7 +134,7 @@
     function handleError() {
       if (handled) return;
       handled = true;
-      var msg = isFr()
+      var msg = isFr(form)
         ? 'Une erreur s\'est produite. Veuillez réessayer ou nous écrire directement.'
         : 'There was an error submitting. Please try again or email us directly.';
       showFormFeedback(form, 'error', msg);
@@ -140,6 +165,7 @@
     event.preventDefault();
     var form = event.target;
     var isNotify = form.id === 'notify-form';
+    var leadKind = form.getAttribute('data-lead-form');
     var submitButton = form.querySelector('button[type="submit"]');
     var formData = new FormData(form);
 
@@ -149,37 +175,47 @@
     // Email is required on both forms.
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
-      showFormFeedback(form, 'error', isFr()
+      showFormFeedback(form, 'error', isFr(form)
         ? 'Veuillez entrer une adresse courriel valide.'
         : 'Please enter a valid email address.');
       return;
     }
 
     var name, company, service, message, successMsg;
+    var fr = isFr(form);
+    var customSuccess = form.getAttribute('data-success-message');
 
-    if (isNotify) {
+    if (leadKind === 'event-fallback') {
+      // Event page email-only form: tag the lead in the Google Sheet with filler values + utm params.
+      var utm = utmString();
+      name = form.getAttribute('data-filler-name') || '';
+      company = form.getAttribute('data-filler-company') || '';
+      service = '';
+      message = (form.getAttribute('data-filler-message') || '') + (utm ? ' [' + utm + ']' : '');
+      successMsg = customSuccess || (fr ? 'Merci !' : 'Thank you!');
+    } else if (isNotify) {
       // Email-only waitlist: tag the lead so it is recognizable in the Google Sheet.
-      name = isFr() ? '(Liste d\'attente produits)' : '(Product waitlist)';
+      name = fr ? '(Liste d\'attente produits)' : '(Product waitlist)';
       company = '—';
       service = '';
-      message = isFr()
+      message = fr
         ? 'Souhaite être notifié au lancement des produits de sécurité.'
         : 'Wants to be notified when security products launch.';
       var successTpl = form.querySelector('[data-success-message]');
       successMsg = successTpl ? successTpl.textContent.trim()
-        : (isFr() ? 'Merci ! Vous êtes sur la liste.' : 'Thanks! You\'re on the list.');
+        : (fr ? 'Merci ! Vous êtes sur la liste.' : 'Thanks! You\'re on the list.');
     } else {
       name = (formData.get('name') || '').trim();
       company = (formData.get('company') || '').trim();
       service = formData.get('service') || '';
       message = (formData.get('message') || '').trim();
       if (!name || !company || !message) {
-        showFormFeedback(form, 'error', isFr()
+        showFormFeedback(form, 'error', fr
           ? 'Veuillez remplir tous les champs obligatoires.'
           : 'Please fill in all required fields.');
         return;
       }
-      successMsg = isFr()
+      successMsg = fr
         ? 'Merci ! Votre message a été envoyé avec succès.'
         : 'Thank you! Your message has been submitted successfully.';
     }
@@ -189,7 +225,7 @@
     if (!submitButton) return;
     submitButton.disabled = true;
     var originalText = submitButton.textContent;
-    submitButton.textContent = isFr() ? 'Envoi en cours...' : 'Submitting...';
+    submitButton.textContent = fr ? 'Envoi en cours...' : 'Submitting...';
 
     var submissionData = {};
     submissionData[GOOGLE_FORM_CONFIG.entryIds.name] = name;
@@ -207,6 +243,9 @@
     ['contact-form', 'notify-form'].forEach(function (id) {
       var form = document.getElementById(id);
       if (form) form.addEventListener('submit', handleSubmit);
+    });
+    document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
+      form.addEventListener('submit', handleSubmit);
     });
   }
 

@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Hexius | Event page (/bonjour/)
+   Layout only: French column left, English right; stacked FR then EN on
+   mobile. All components, colors and type come from styles.css + landing.css.
+   ========================================================================== */
+
+.event-page { position: relative; }
+
+/* Hero background (landing-hero__bg / canvas / overlay) behind the top of both columns */
+.landing-page .event-page__bg {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: min(100vh, 900px);
+  min-height: 0;
+  padding: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+}
+
+.event-split {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1280px;
+}
+
+.event-col {
+  min-width: 0;
+  padding: clamp(32px, 6vw, 80px) clamp(8px, 2.5vw, 40px) clamp(48px, 8vw, 96px);
+  scroll-margin-top: var(--landing-nav-h);
+}
+.event-col + .event-col { border-left: 1px solid var(--border); }
+
+/* Side by side: share row heights so FR and EN sections line up */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 901px) {
+    .event-col {
+      display: grid;
+      grid-row: span 5;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+      align-content: start;
+    }
+  }
+}
+
+.event-col__headline { font-size: clamp(38px, 4.6vw, 64px); }
+
+/* Language jump link is only useful when columns are stacked */
+.event-col__jump { display: none; }
+.event-col .landing-hero__sub { margin-bottom: var(--spacing-md); }
+
+.event-offer {
+  padding: var(--spacing-md);
+  margin: 0 0 var(--spacing-md);
+}
+.event-offer .signal-tag { opacity: 1; display: inline-block; margin-bottom: 12px; }
+.event-offer__title { font-size: clamp(20px, 2.4vw, 26px); }
+.event-offer__body { margin: 0 0 12px; }
+/* Validity is the urgency line: full signal color, not the dimmed stamp style */
+.event-offer__validity { display: block; margin: 0; color: var(--signal-sim); font-size: 12px; }
+
+.event-col .landing-hero__ctas { flex-direction: column; }
+.event-cta { width: 100%; justify-content: center; text-align: center; white-space: normal; line-height: 1.4; }
+
+.event-block {
+  margin-top: clamp(40px, 6vw, 64px);
+  padding-top: clamp(28px, 4vw, 48px);
+  border-top: 1px solid var(--border);
+  scroll-margin-top: calc(var(--landing-nav-h) + 16px);
+}
+.event-block .landing-section__title { font-size: clamp(28px, 4vw, 42px); }
+.event-block .landing-section__sub { margin: 0 0 var(--spacing-md); }
+
+.event-col .service-tile-grid { grid-template-columns: 1fr; }
+
+.event-proof { text-align: left; }
+.event-proof .landing-credibility__list { justify-content: flex-start; }
+
+.event-calendar {
+  min-width: 280px;
+  height: 720px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.event-pdf { width: 100%; margin-top: var(--spacing-sm); justify-content: center; }
+.event-pdf[hidden] { display: none; }
+
+.event-footer .landing-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--spacing-sm); }
+.event-footer .landing-footer__meta { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); }
+
+@media (max-width: 900px) {
+  .event-split { grid-template-columns: 1fr; }
+  .event-col + .event-col {
+    border-left: 0;
+    border-top: 1px solid var(--border-bright);
+  }
+  .event-col__jump { display: inline-flex; }
+}
